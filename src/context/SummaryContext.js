@@ -29,7 +29,7 @@ const SummaryProvider = ({ children, value, ...rest }) => {
     const [summary, setSummary] = useState(value || defaultValue)
 
     useEffect(async () => {
-        const response = await axios.get('https://api.covid19tracker.ca/summary/')
+        const response = await axios.get('/.netlify/functions/node-fetch')
         const { data } = response
         if(data){
             const [summaryData] = data.data;
