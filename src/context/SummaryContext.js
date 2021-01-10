@@ -10,30 +10,41 @@ import axios from 'axios'
 const SummaryContext = createContext({});
 
 const defaultValue = {
-    "latest_date": "2020-04-13",
+    "latest_date": null,
     "change_cases": null,
     "change_fatalities": null,
-    "change_tests": "6464",
-    "change_hospitalizations": "23",
-    "change_criticals": "2",
-    "change_recoveries": "240",
-    "total_cases": "0",
-    "total_fatalities": "417",
-    "total_tests": "433650",
-    "total_hospitalizations": "1801",
-    "total_criticals": "571",
-    "total_recoveries": "7412"
+    "change_tests": null,
+    "change_hospitalizations": null,
+    "change_criticals": null,
+    "change_recoveries": null,
+    "total_cases": null,
+    "total_fatalities": null,
+    "total_tests": null,
+    "total_hospitalizations": null,
+    "total_criticals": null,
+    "total_recoveries": null,
+    loadingState: 'none'
 }
 
 const SummaryProvider = ({ children, value, ...rest }) => {
     const [summary, setSummary] = useState(value || defaultValue)
 
     useEffect(async () => {
+        setSummary(prevSummary =>{
+            const newSummary = Object.assign({}, prevSummary);
+            newSummary.loadingState = 'loading';
+            return newSummary;
+        })
         const response = await axios.get('/.netlify/functions/node-fetch')
         const { data } = response
         if(data){
             const [summaryData] = data.data;
-            setSummary(summaryData);
+            setTimeout(() => {setSummary(prevSummary =>{
+                const newSummary = Object.assign({}, prevSummary, summaryData);
+                newSummary.loadingState = 'complete';
+                return newSummary;
+            })
+            }, 2000)
         }
     }, [])
 
