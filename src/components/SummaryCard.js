@@ -14,15 +14,22 @@ const useStyles = makeStyles({
     },
     descriptionText: {
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     card: {
-        width: 400,
+        width: 'min(100vw, 400px)',
         height: 250
     }
 })
 
-const SummaryCard = ({ amount, title, description }) => {
+
+const ChangeText = styled.span`
+    color: ${props => props.positive ? 'green' : 'red'};
+    margin-left: 6px;
+    font-size: 14px;
+`
+
+const SummaryCard = ({ amount, secondaryAmount, title, description }) => {
     const c = useStyles()
     return (
         <Card className={c.card}>
@@ -32,6 +39,9 @@ const SummaryCard = ({ amount, title, description }) => {
                 </Typography>
                 <Typography className={c.Typography}>
                     { new Intl.NumberFormat().format(amount) }
+                    <ChangeText positive={secondaryAmount && secondaryAmount >= 0}>
+                        { new Intl.NumberFormat('en-US', {signDisplay: 'always'}).format(secondaryAmount || 0)}
+                    </ChangeText>
                 </Typography>
                 <Typography className={c.descriptionText}>
                     { description }

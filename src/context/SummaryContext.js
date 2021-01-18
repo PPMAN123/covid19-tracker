@@ -29,23 +29,26 @@ const defaultValue = {
 const SummaryProvider = ({ children, value, ...rest }) => {
     const [summary, setSummary] = useState(value || defaultValue)
 
-    useEffect(async () => {
-        setSummary(prevSummary =>{
-            const newSummary = Object.assign({}, prevSummary);
-            newSummary.loadingState = 'loading';
-            return newSummary;
-        })
-        const response = await axios.get('/.netlify/functions/node-fetch')
-        const { data } = response
-        if(data){
-            const [summaryData] = data.data;
-            setTimeout(() => {setSummary(prevSummary =>{
-                const newSummary = Object.assign({}, prevSummary, summaryData);
-                newSummary.loadingState = 'complete';
+    useEffect(() => {
+        const dataFetch = async () =>{
+            setSummary(prevSummary =>{
+                const newSummary = Object.assign({}, prevSummary);
+                newSummary.loadingState = 'loading';
                 return newSummary;
             })
-            }, 2000)
+            const response = await axios.get('/.netlify/functions/node-fetch/?endpoint=summary')
+            const { data } = response
+            if(data){
+                const [summaryData] = data.data;
+                setTimeout(() => {setSummary(prevSummary =>{
+                    const newSummary = Object.assign({}, prevSummary, summaryData);
+                    newSummary.loadingState = 'complete';
+                    return newSummary;
+                })
+                }, 1)
+            }
         }
+        dataFetch();
     }, [])
 
     return (

@@ -1,8 +1,11 @@
 const fetch = require('node-fetch')
 
-const handler = async function () {
+const handler = async function (event) {
   try {
-    const response = await fetch('https://api.covid19tracker.ca/summary/', {
+    const { queryStringParameters } = event;
+    const { endpoint } = queryStringParameters;
+
+    const response = await fetch(`https://api.covid19tracker.ca/${endpoint}/`, {
       headers: { Accept: 'application/json' },
     })
     if (!response.ok) {
