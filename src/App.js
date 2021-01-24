@@ -6,20 +6,23 @@ import {
 import { useSummary, SummaryProvider } from './context/SummaryContext'
 import { ReportProvider } from './context/ReportContext'
 import HomePage from './pages/HomePage'
+import {ProvinceProvider} from './context/ProvinceContext'
 
 function App() {
   return (
     <Router>
       <SummaryProvider>
         <ReportProvider>
-          <Switch>
-            <Route
-              exact
-              path="/"
-            >
-              <HomePage/>
-            </Route>
-          </Switch>
+          <ProvinceProvider>
+            <Switch>
+              <Route
+                exact
+                path="/"
+              >
+                <HomePage/>
+              </Route>
+            </Switch>
+          </ProvinceProvider>
         </ReportProvider>
       </SummaryProvider>
     </Router>

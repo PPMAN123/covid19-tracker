@@ -7,7 +7,7 @@ import { green, grey, purple, red } from '@material-ui/core/colors'
 
 const useStyles = makeStyles({
     cardContent : {
-        width:500   ,
+        width:1000,
         height:500
     }
 })
@@ -47,13 +47,13 @@ const CumulativeChart = () => {
             const hospitalizationSet = report.dataPoints.map(report =>{
                 return{
                     x: moment(report.date).format("MMM DD, YY"),
-                    y: report.total_tests
+                    y: report.total_hospitalizations
                 }
             })
             const recoverySet = report.dataPoints.map(report =>{
                 return{
                     x: moment(report.date).format("MMM DD, YY"),
-                    y: report.recoveries
+                    y: report.total_recoveries
                 }
             })
             const myChart = new Chart(ctx, {
@@ -63,42 +63,57 @@ const CumulativeChart = () => {
                         {
                             label: 'Total Cases',
                             data: caseSet,
-                            backgroundColor:'red',
+                            borderColor:'#264653',
+                            backgroundColor: '#264653',
                             fill: false,
                         },
                         {
                             label: 'Total Deaths',
-                            backgroundColor: 'grey',
+                            borderColor: '#2a9d8f',
                             data: deathSet,
+                            backgroundColor: '#2a9d8f',
+                            hidden: true,
                             fill: false,
                         },
                         {
                             label: 'Total Hospitalizations',
-                            backgroundColor: 'purple',
+                            borderColor: '#e9c46a',
+                            backgroundColor: '#e9c46a',
                             data: hospitalizationSet,
+                            hidden: true,
                             fill: false,
                         },
                         {
                             label: 'Total Tests',
-                            backgroundColor: 'purple',
+                            borderColor: '#f4a261',
+                            backgroundColor: '#f4a261',
                             data: testSet,
+                            hidden: true,
                             fill: false,
                         },
                         {
                             label: 'Total Recoveries',
-                            backgroundColor: 'blue',
+                            borderColor: '#e76f51',
+                            backgroundColor: '#e76f51',
                             data: recoverySet,
+                            hidden: true,
                             fill: false,
                         }
                     ],
                 },
                 options:{
+                    elements: {
+                        point:{
+                            radius: 1.5
+                        }
+                    },
                     scales: {
                         xAxes: [{
                             type: 'category',
                             labels: dates,
                             ticks: {
                                 beginAtZero: true,
+                                autoSkipPadding: 30
                             }
                         }]
                     }
@@ -110,7 +125,7 @@ const CumulativeChart = () => {
     return (
         <Card className={c.cardContent} >
             <CardContent  >
-                <canvas width="400" height="400" ref={chart} ></canvas>
+                <canvas ref={chart} ></canvas>
             </CardContent>
         </Card>
     )

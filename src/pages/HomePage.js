@@ -4,6 +4,7 @@ import SummaryCard from '../components/SummaryCard'
 import { Grid, makeStyles } from '@material-ui/core'
 import BounceLoader from '../components/BounceLoader'
 import CumulativeChart from '../components/CumulativeChart'
+import Table from '../components/Table'
 
 const useStyles = makeStyles({
     container:{
@@ -46,8 +47,13 @@ const HomePage = () => {
                         <SummaryCard title="Total Criticals" amount={summary.total_criticals} secondaryAmount={summary.change_criticals} description="Total number of people in critical conditions in Canada"/>
                     </Grid>
                 </Grid>
+                <Grid item spacing={3} container direction="row" justify="center">
+                    <CumulativeChart/>
+                </Grid>
+                <Grid item spacing={3} container direction="row" justify="center">
+                    <Table/>
+                </Grid>
             </Grid>
-            <CumulativeChart/>
         </React.Fragment>
     )
 }
