@@ -146,7 +146,7 @@ const EnhancedTableToolbar = (props) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '90%',
   },
   paper: {
     width: '100%',
@@ -183,7 +183,7 @@ const provinceCodeMapping = {
     'SK': 'Saskatchewan',
     'YT': 'Yukon'
 }
-// Province, Cases, Deaths, Tests, Hospitalizations, Criticals, Recoveries, Vaccinated
+
 export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -220,7 +220,6 @@ export default function EnhancedTable() {
     setPage(newPage);
   };
 
-  const emptyRows = rows.length;
   console.log(rows);
   console.log(stableSort(rows, getComparator(order, orderBy)));
 
@@ -268,20 +267,9 @@ export default function EnhancedTable() {
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          component="div"
-          count={rows.length}
-          page={page}
-          onChangePage={handleChangePage}
-        />
       </Paper>
     </div>
   );
