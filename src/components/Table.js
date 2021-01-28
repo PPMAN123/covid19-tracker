@@ -20,24 +20,6 @@ function createData(Province, Cases, Deaths, Tests, Hospitalizations, Criticals,
   return { Province, Cases, Deaths, Tests, Hospitalizations, Criticals, Recoveries, Vaccinated };
 }
 
-
-
-// const rows = [
-//   createData('Ontario', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Quebec', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Manitoba', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Alberta', 1, 2, 3, 4, 5, 6, 7),
-//   createData('British Columbia', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Nova Scotia', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Newfoundland', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Saskatchewan', 1, 2, 3, 4, 5, 6, 7),
-//   createData('New Brunswick', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Nunavut', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Yukon', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Northwest Territories', 1, 2, 3, 4, 5, 6, 7),
-//   createData('Prince Edward Island', 1, 2, 3, 4, 5, 6, 7),
-// ];
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
