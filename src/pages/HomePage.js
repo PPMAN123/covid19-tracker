@@ -5,7 +5,7 @@ import { Grid, makeStyles } from '@material-ui/core'
 import BounceLoader from '../components/BounceLoader'
 import CumulativeChart from '../components/CumulativeChart'
 import Table from '../components/Table'
-
+import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart'
 const useStyles = makeStyles({
     container:{
         transition: 'opacity 0.5s ease',
@@ -48,7 +48,8 @@ const HomePage = () => {
                     </Grid>
                 </Grid>
                 <Grid item spacing={3} container direction="row" justify="center">
-                    <CumulativeChart/>
+                    <CumulativeChart />
+                    <ProvinceComparisonChart />
                 </Grid>
                 <Grid item spacing={3} container direction="row" justify="center">
                     <Table/>

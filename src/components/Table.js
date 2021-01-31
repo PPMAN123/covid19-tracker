@@ -150,28 +150,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const provinceCodeMapping = {
-    'AB': 'Alberta',
-    'BC': 'British Columbia',
-    'MB': 'Manitoba',
-    'NB': 'New Brunswick',
-    'NL': 'Newfoundland and Labrador',
-    'NT': 'Northwest Territories',
-    'NS': 'Nova Scotia',
-    'NU': 'Nunavut',
-    'ON': 'Ontario',
-    'PE': 'Prince Edward Island',
-    'QC': 'Quebec',
-    'SK': 'Saskatchewan',
-    'YT': 'Yukon'
-}
-
 export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [page, setPage] = React.useState(0);
-  const {province} = useProvinces();
+  const {province,provinceCodeMapping} = useProvinces();
   const [rows, setRows] = useState([]);
   useEffect(() => {
       console.log(province)
