@@ -3,7 +3,7 @@ import { useSummary } from '../context/SummaryContext'
 import SummaryCard from '../components/SummaryCard'
 import { Grid, makeStyles } from '@material-ui/core'
 import BounceLoader from '../components/BounceLoader'
-import CumulativeChart from '../components/CumulativeChart'
+import CumulativeChart from '../hoc/CumulativeChart'
 import Table from '../components/Table'
 import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart'
 const useStyles = makeStyles({
