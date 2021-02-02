@@ -48,7 +48,7 @@ const dataFields = [
         data: [],
         hidden: true,
         fill: true,
-        fieldName: 'total_revcoeries'
+        fieldName: 'total_revcoveries'
     }
 ]
 
