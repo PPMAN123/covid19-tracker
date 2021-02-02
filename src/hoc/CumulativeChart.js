@@ -10,45 +10,45 @@ const dataFields = [
         label: 'Total Cases',
         data: [],
         borderColor:'#264653',
-        backgroundColor: '#264653',
-        fill: false,
+        backgroundColor: '#3A6B7E',
+        fill: true,
         fieldName: 'total_cases'
     },
     {
         label: 'Total Deaths',
         borderColor: '#2a9d8f',
         data: [],
-        backgroundColor: '#2a9d8f',
+        backgroundColor: '#3ECCBB',
         hidden: true,
-        fill: false,
+        fill: true,
         fieldName: 'total_fatalities'
     },
     {
         label: 'Total Hospitalizations',
         borderColor: '#e9c46a',
-        backgroundColor: '#e9c46a',
+        backgroundColor: '#EFD595',
         data: [],
         hidden: true,
-        fill: false,
+        fill: true,
         fieldName: 'total_hospitalizations'
     },
     {
         label: 'Total Tests',
         borderColor: '#f4a261',
-        backgroundColor: '#f4a261',
+        backgroundColor: '#F8C8A0',
         data: [],
         hidden: true,
-        fill: false,
+        fill: true,
         fieldName: 'total_tests'
     },
     {
         label: 'Total Recoveries',
         borderColor: '#e76f51',
-        backgroundColor: '#e76f51',
+        backgroundColor: '#F0A693',
         data: [],
         hidden: true,
-        fill: false,
-        fieldName: 'total_revoceries'
+        fill: true,
+        fieldName: 'total_revcoeries'
     }
 ]
 
@@ -89,6 +89,7 @@ const CumulativeChart = ({children, ...rest}) => {
             data={report}
             chartDataset={chartDataSet}
             chartXAxes={chartXAxes}
+            title='Cumulative chart'
             {...rest}
         >
             {children}

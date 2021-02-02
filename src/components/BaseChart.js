@@ -4,12 +4,12 @@ import { Card, CardContent, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
     cardContent : {
-        width:1000,
+        width:900,
         height:500
     }
 })
 
-const BaseChart = ({ type, chartDataset, chartXAxes }) => {
+const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
     const chart = useRef();
     const [ctx, setCtx] = useState(null);
     const c = useStyles()
@@ -20,14 +20,16 @@ const BaseChart = ({ type, chartDataset, chartXAxes }) => {
     
     useEffect(() => {
         if(ctx){
-            console.log(chartDataset)
-            console.log(chartXAxes)
             new Chart(ctx, {
                 type: type,
                 data:{
                     datasets: chartDataset
                 },
                 options:{
+                    title: {
+                        display: true,
+                        text: title
+                    },
                     elements: {
                         point:{
                             radius: 1.5

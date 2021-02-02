@@ -80,6 +80,7 @@ const ProvinceComparisonChart = ({children, ...rest}) => {
             data={province}
             chartDataset={chartDataSet}
             chartXAxes={chartXAxes}
+            title='Stats by Province'
             {...rest}
         >
             {children}
