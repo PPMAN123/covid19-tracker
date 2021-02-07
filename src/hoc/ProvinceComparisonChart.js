@@ -6,14 +6,14 @@ import {cloneDeep} from 'lodash'
 
 const dataFields = [
     {
-        label: 'Cases',
+        label: 'Total Cases',
         data: [],
         borderColor: '#000000',
         backgroundColor: '#000000',
         fieldName: 'total_cases'
     },
     {
-        label: 'Recoveries',
+        label: 'Total Recoveries',
         data: [],
         borderColor: '#893168',
         backgroundColor: '#893168',
@@ -21,7 +21,7 @@ const dataFields = [
         hidden: true
     },
     {
-        label: 'Deaths',
+        label: 'Total Deaths',
         data: [],
         borderColor: '#1098F7',
         backgroundColor: '#1098F7',
@@ -29,7 +29,7 @@ const dataFields = [
         hidden: true
     },
     {
-        label: 'Hospitalizations',
+        label: 'Total Hospitalizations',
         data: [],
         borderColor: '#CCCCCC',
         backgroundColor: '#CCCCCC',
@@ -37,7 +37,7 @@ const dataFields = [
         hidden: true
     },
     {
-        label: 'Tests',
+        label: 'Total Tests',
         data: [],
         borderColor: '#B89E97',
         backgroundColor: '#B89E97',

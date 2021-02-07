@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         fontWeight: 'bold',
     },
     card: {
-        width: 'min(100vw, 400px)',
+        width: '100%',
         height: 250
     }
 })

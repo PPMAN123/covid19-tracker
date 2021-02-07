@@ -1,18 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
 import Chart from 'chart.js'
 import { Card, CardContent, makeStyles } from '@material-ui/core'
+import useDimension from '../hooks/useDimension'
+
 
 const useStyles = makeStyles({
     cardContent : {
-        width:900,
-        height:500
+        width: '100%',
+        position: 'relative',
+        height: 400
     }
 })
+
+
 
 const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
     const chart = useRef();
     const [ctx, setCtx] = useState(null);
     const c = useStyles()
+    const [chartInstance, setChartInstance] = useState(null)
 
     useEffect(() =>{
         setCtx(chart.current);
@@ -20,12 +26,17 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
     
     useEffect(() => {
         if(ctx){
-            new Chart(ctx, {
+            if(chartInstance){
+                chartInstance.destroy();
+            }
+            setChartInstance(new Chart(ctx, {
                 type: type,
                 data:{
                     datasets: chartDataset
                 },
                 options:{
+                    maintainAspectRatio: false,
+                    responsive: true,
                     title: {
                         display: true,
                         text: title,
@@ -40,15 +51,13 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
                         xAxes: chartXAxes
                     }
                 }
-            })
+            }))
         }
     }, [ctx, chartDataset, chartXAxes, type])
 
     return (
         <Card className={c.cardContent} >
-            <CardContent>
-                <canvas ref={chart} ></canvas>
-            </CardContent>
+            <canvas ref={chart} />
         </Card>
     )
 }
