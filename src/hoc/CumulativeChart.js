@@ -53,7 +53,7 @@ const dataFields = [
 ]
 
 const CumulativeChart = ({children, ...rest}) => {
-    const { report, setReports } = useReport()
+    const { report } = useReport()
     const [chartDataSet, setChartDataSet] = useState(dataFields)
     const [chartXAxes, setChartXAxes] = useState([])
 
@@ -73,7 +73,7 @@ const CumulativeChart = ({children, ...rest}) => {
                     const { fieldName } = dataSet;
                     dataSet.data = report.dataPoints.map(p => {
                         return {
-                            x: report.dataPoints.map(report => moment(report.date).format("MMM DD, YY")),
+                            x: moment(p.date).format("MMM DD, YY"),
                             y: p[fieldName]
                         }
                     })
@@ -89,7 +89,7 @@ const CumulativeChart = ({children, ...rest}) => {
             data={report}
             chartDataset={chartDataSet}
             chartXAxes={chartXAxes}
-            title='Cumulative chart'
+            title='Cumulative Chart'
             {...rest}
         >
             {children}

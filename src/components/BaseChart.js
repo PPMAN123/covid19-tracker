@@ -28,7 +28,8 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
                 options:{
                     title: {
                         display: true,
-                        text: title
+                        text: title,
+                        fontSize: 18,
                     },
                     elements: {
                         point:{
