@@ -61,7 +61,7 @@ const HomePage = () => {
                     </Grid>
                 </Grid>
                 <Grid item spacing={3} container direction="row" justify="center">
-                    <Grid item md={12}>
+                    <Grid item xs={12}>
                         <Table/>
                     </Grid>
                 </Grid>
