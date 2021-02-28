@@ -1,23 +1,40 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { lighten, makeStyles } from '@material-ui/core/styles';
-import { 
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TablePagination,
-    TableRow,
-    TableSortLabel,
-    Toolbar,
-    Typography,
-    Paper,
-} from '@material-ui/core'
-import {useProvinces} from '../context/ProvinceContext'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel,
+  Toolbar,
+  Typography,
+  Paper,
+} from '@material-ui/core';
+import { useProvinces } from '../context/ProvinceContext';
 
-
-function createData(Province, Cases, Deaths, Tests, Hospitalizations, Criticals, Recoveries, Vaccinated) {
-  return { Province, Cases, Deaths, Tests, Hospitalizations, Criticals, Recoveries, Vaccinated };
+function createData(
+  Province,
+  Cases,
+  Deaths,
+  Tests,
+  Hospitalizations,
+  Criticals,
+  Recoveries,
+  Vaccinated
+) {
+  return {
+    Province,
+    Cases,
+    Deaths,
+    Tests,
+    Hospitalizations,
+    Criticals,
+    Recoveries,
+    Vaccinated,
+  };
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -51,10 +68,25 @@ const headCells = [
   { id: 'Cases', numeric: true, disablePadding: false, label: 'Cases' },
   { id: 'Deaths', numeric: true, disablePadding: false, label: 'Deaths' },
   { id: 'Tests', numeric: true, disablePadding: false, label: 'Tests' },
-  { id: 'Hospitalizations', numeric: true, disablePadding: false, label: 'Hospitalizations' },
+  {
+    id: 'Hospitalizations',
+    numeric: true,
+    disablePadding: false,
+    label: 'Hospitalizations',
+  },
   { id: 'Criticals', numeric: true, disablePadding: false, label: 'Criticals' },
-  { id: 'Recoveries', numeric: true, disablePadding: false, label: 'Recoveries' },
-  { id: 'Vaccinated', numeric: true, disablePadding: false, label: 'Vaccinated' },
+  {
+    id: 'Recoveries',
+    numeric: true,
+    disablePadding: false,
+    label: 'Recoveries',
+  },
+  {
+    id: 'Vaccinated',
+    numeric: true,
+    disablePadding: false,
+    label: 'Vaccinated',
+  },
 ];
 
 function EnhancedTableHead(props) {
@@ -116,12 +148,15 @@ const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
 
   return (
-    <Toolbar
-      className={classes.root}
-    >
-        <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-            Stats by Province
-        </Typography>
+    <Toolbar className={classes.root}>
+      <Typography
+        className={classes.title}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+      >
+        Stats by Province
+      </Typography>
     </Toolbar>
   );
 };
@@ -155,26 +190,28 @@ export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [page, setPage] = React.useState(0);
-  const {province,provinceCodeMapping} = useProvinces();
+  const { province, provinceCodeMapping } = useProvinces();
   const [rows, setRows] = useState([]);
   useEffect(() => {
-      console.log(province)
-      if(province){
-          const {dataPoints} = province;
-          setRows(dataPoints.map(provinceData =>{
-              return createData(
-                  provinceCodeMapping[provinceData.province],
-                  provinceData.total_cases,
-                  provinceData.total_fatalities,
-                  provinceData.total_tests,
-                  provinceData.total_hospitalizations,
-                  provinceData.total_criticals,
-                  provinceData.total_recoveries,
-                  provinceData.total_vaccinations
-              )
-          }))
-      }
-  }, [province])
+    console.log(province);
+    if (province) {
+      const { dataPoints } = province;
+      setRows(
+        dataPoints.map((provinceData) => {
+          return createData(
+            provinceCodeMapping[provinceData.province],
+            provinceData.total_cases,
+            provinceData.total_fatalities,
+            provinceData.total_tests,
+            provinceData.total_hospitalizations,
+            provinceData.total_criticals,
+            provinceData.total_recoveries,
+            provinceData.total_vaccinations
+          );
+        })
+      );
+    }
+  }, [province]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -208,8 +245,8 @@ export default function EnhancedTable() {
               rowCount={rows.length}
             />
             <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .map((row, index) => {
+              {stableSort(rows, getComparator(order, orderBy)).map(
+                (row, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
@@ -232,7 +269,8 @@ export default function EnhancedTable() {
                       {/* Cases, Deaths, Tests, Hospitalizations, Criticals, Recoveries, Vaccinated */}
                     </TableRow>
                   );
-                })}
+                }
+              )}
             </TableBody>
           </Table>
         </TableContainer>
