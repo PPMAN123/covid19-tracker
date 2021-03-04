@@ -7,6 +7,7 @@ import CumulativeChart from '../hoc/CumulativeChart';
 import Table from '../components/Table';
 import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart';
 import { Link, link } from 'react-router-dom';
+import AppBar from '../components/Appbar';
 const useStyles = makeStyles({
   container: {
     transition: 'opacity 0.5s ease',
