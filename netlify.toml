@@ -2,3 +2,7 @@
   command = "CI= npm run build && cd functions/node-fetch && npm install"
   functions = "functions"
   publish = "build"
+  command: CI= npm run build && cd functions/node-fetch && npm install
+  commandOrigin: config
+  functions: /opt/build/repo/functions
+  publish: /opt/build/repo/build
