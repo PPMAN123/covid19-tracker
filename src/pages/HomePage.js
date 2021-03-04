@@ -1,14 +1,15 @@
-import React from "react";
-import { useSummary } from "../context/SummaryContext";
-import SummaryCard from "../components/SummaryCard";
-import { Grid, makeStyles } from "@material-ui/core";
-import BounceLoader from "../components/BounceLoader";
-import CumulativeChart from "../hoc/CumulativeChart";
-import Table from "../components/Table";
-import ProvinceComparisonChart from "../hoc/ProvinceComparisonChart";
+import React from 'react';
+import { useSummary } from '../context/SummaryContext';
+import SummaryCard from '../components/SummaryCard';
+import { Grid, makeStyles } from '@material-ui/core';
+import BounceLoader from '../components/BounceLoader';
+import CumulativeChart from '../hoc/CumulativeChart';
+import Table from '../components/Table';
+import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart';
+import { Link, link } from 'react-router-dom';
 const useStyles = makeStyles({
   container: {
-    transition: "opacity 0.5s ease",
+    transition: 'opacity 0.5s ease',
   },
   beforeLoading: {
     opacity: 0,
@@ -17,9 +18,9 @@ const useStyles = makeStyles({
     opacity: 1,
   },
   pageContainer: {
-    display: "flex",
-    margin: "20px 5%",
-    position: "relative",
+    display: 'flex',
+    margin: '20px 5%',
+    position: 'relative',
   },
 });
 
@@ -29,13 +30,14 @@ const HomePage = () => {
   return (
     <div className={c.pageContainer}>
       <BounceLoader exitCondition={summary.loadingState === "complete"} />
+      <BounceLoader exitCondition={summary.loadingState === 'complete'} />
       <Grid
         spacing={3}
         container
         direction="column"
         justify="center"
         className={`${c.container} ${
-          summary.loadingState === "complete" ? c.afterLoading : c.beforeLoading
+          summary.loadingState === 'complete' ? c.afterLoading : c.beforeLoading
         }`}
       >
         <Grid spacing={3} container direction="row" justify="center" item>
@@ -88,6 +90,9 @@ const HomePage = () => {
               secondaryAmount={summary.change_criticals}
               description="Total number of people in critical conditions in Canada"
             />
+          </Grid>
+          <Grid>
+            <Link to="/provinces">Provinces</Link>
           </Grid>
         </Grid>
         <Grid item spacing={3} container direction="row" justify="center">

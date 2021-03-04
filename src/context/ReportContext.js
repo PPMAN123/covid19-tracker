@@ -10,6 +10,7 @@ const defaultValue = {
 
 const ReportProvider = ({ children, value, ...rest }) => {
   const [report, setReports] = useState(value || defaultValue);
+  const [currentEndpoint, setCurrentEndpoint] = useState('reports');
 
   useEffect(async () => {
     const dataFetch = async () => {
@@ -19,7 +20,7 @@ const ReportProvider = ({ children, value, ...rest }) => {
         return newReport;
       });
       const response = await axios.get(
-        '/.netlify/functions/node-fetch/?endpoint=reports'
+        `/.netlify/functions/node-fetch/?endpoint=${currentEndpoint}`
       );
       const { data } = response;
       if (data) {
@@ -36,13 +37,14 @@ const ReportProvider = ({ children, value, ...rest }) => {
       }
     };
     dataFetch();
-  }, []);
+  }, [currentEndpoint]);
 
   return (
     <ReportContext.Provider
       value={{
         report,
         setReports,
+        setCurrentEndpoint,
       }}
       {...rest}
     >
@@ -52,8 +54,8 @@ const ReportProvider = ({ children, value, ...rest }) => {
 };
 
 const useReport = () => {
-  const { report, setReports } = useContext(ReportContext);
-  return { report, setReports };
+  const { report, setReports, setCurrentEndpoint } = useContext(ReportContext);
+  return { report, setReports, setCurrentEndpoint };
 };
 
 export { ReportProvider, useReport };

@@ -1,47 +1,47 @@
-import React from "react";
-import BaseChart from "../components/BaseChart";
-import { useProvinces } from "../context/ProvinceContext";
-import { useEffect, useState } from "react";
-import { cloneDeep } from "lodash";
+import React from 'react';
+import BaseChart from '../components/BaseChart';
+import { useProvinces } from '../context/ProvinceContext';
+import { useEffect, useState } from 'react';
+import { cloneDeep } from 'lodash';
 
 const dataFields = [
   {
-    label: "Total Cases",
+    label: 'Total Cases',
     data: [],
-    borderColor: "#000000",
-    backgroundColor: "#000000",
-    fieldName: "total_cases",
+    borderColor: '#000000',
+    backgroundColor: '#000000',
+    fieldName: 'total_cases',
   },
   {
-    label: "Total Recoveries",
+    label: 'Total Recoveries',
     data: [],
-    borderColor: "#893168",
-    backgroundColor: "#893168",
-    fieldName: "total_recoveries",
+    borderColor: '#893168',
+    backgroundColor: '#893168',
+    fieldName: 'total_recoveries',
     hidden: true,
   },
   {
-    label: "Total Deaths",
+    label: 'Total Deaths',
     data: [],
-    borderColor: "#1098F7",
-    backgroundColor: "#1098F7",
-    fieldName: "total_fatalities",
+    borderColor: '#1098F7',
+    backgroundColor: '#1098F7',
+    fieldName: 'total_fatalities',
     hidden: true,
   },
   {
-    label: "Total Hospitalizations",
+    label: 'Total Hospitalizations',
     data: [],
-    borderColor: "#CCCCCC",
-    backgroundColor: "#CCCCCC",
-    fieldName: "total_hospitalizations",
+    borderColor: '#CCCCCC',
+    backgroundColor: '#CCCCCC',
+    fieldName: 'total_hospitalizations',
     hidden: true,
   },
   {
-    label: "Total Tests",
+    label: 'Total Tests',
     data: [],
-    borderColor: "#B89E97",
-    backgroundColor: "#B89E97",
-    fieldName: "total_tests",
+    borderColor: '#B89E97',
+    backgroundColor: '#B89E97',
+    fieldName: 'total_tests',
     hidden: true,
   },
 ];
@@ -58,7 +58,7 @@ const ProvinceComparisonChart = ({ children, ...rest }) => {
       );
       setChartXAxes([
         {
-          type: "category",
+          type: 'category',
           labels: sortedProvinces.map((p) => provinceCodeMapping[p.province]),
         },
       ]);
