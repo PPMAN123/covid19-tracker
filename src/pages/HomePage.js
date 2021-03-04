@@ -29,7 +29,7 @@ const HomePage = () => {
   const c = useStyles();
   return (
     <div className={c.pageContainer}>
-      <BounceLoader exitCondition={summary.loadingState === "complete"} />
+      <AppBar position="static" />
       <BounceLoader exitCondition={summary.loadingState === 'complete'} />
       <Grid
         spacing={3}
