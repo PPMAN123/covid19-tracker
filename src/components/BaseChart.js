@@ -31,6 +31,7 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
             datasets: chartDataset,
           },
           options: {
+            showLines: true,
             maintainAspectRatio: false,
             responsive: true,
             title: {
@@ -45,6 +46,15 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
             },
             scales: {
               xAxes: chartXAxes,
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    suggestedMin: 0,
+                  },
+                },
+              ],
             },
           },
         })

@@ -42,7 +42,7 @@ const CumulativeChart = ({ children, ...rest }) => {
           dataSet.data = report.dataPoints.map((p) => {
             return {
               x: moment(p.date).format('MMM DD, YY'),
-              y: p[fieldName],
+              y: p[fieldName] || 0,
             };
           });
           return dataSet;

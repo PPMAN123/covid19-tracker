@@ -24,6 +24,9 @@ const useStyles = makeStyles({
     display: 'flex',
     margin: '20px 5%',
     position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: '75px',
   },
 });
 
@@ -32,7 +35,7 @@ const HomePage = () => {
   const c = useStyles();
   return (
     <div className={c.pageContainer}>
-      <AppBar position="static" />
+      <AppBar />
       <BounceLoader exitCondition={summary.loadingState === 'complete'} />
       <Grid
         spacing={3}
@@ -93,11 +96,6 @@ const HomePage = () => {
               secondaryAmount={summary.change_criticals}
               description="Total number of people in critical conditions in Canada"
             />
-          </Grid>
-          <Grid>
-            <Button to="/provinces" component={Link}>
-              Provinces
-            </Button>
           </Grid>
         </Grid>
         <Grid item spacing={3} container direction="row" justify="center">

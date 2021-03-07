@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
   provincesButton: {
     color: 'white',
   },
-  appBar: {
-    color: '#212121',
+  toolBar: {
+    justifyContent: 'space-between',
+    paddingLeft: '30px',
+    paddingRight: '30px',
   },
 }));
 
@@ -28,8 +30,8 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar className={classes.appBar}>
+      <AppBar className={classes.appBar} style={{ background: '#212121' }}>
+        <Toolbar className={classes.toolBar}>
           <Button to="/" component={Link} className={classes.homebutton}>
             Ethan's Covid 19 Tracker for Canada
           </Button>
