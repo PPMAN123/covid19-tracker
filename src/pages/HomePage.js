@@ -95,9 +95,9 @@ const HomePage = () => {
             />
           </Grid>
           <Grid>
-            <Link to="/provinces" component={Button}>
+            <Button to="/provinces" component={Link}>
               Provinces
-            </Link>
+            </Button>
           </Grid>
         </Grid>
         <Grid item spacing={3} container direction="row" justify="center">

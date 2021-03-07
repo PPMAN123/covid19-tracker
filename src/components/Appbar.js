@@ -30,16 +30,16 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.appBar}>
-          <Link to="/" component={Button} className={classes.homebutton}>
+          <Button to="/" component={Link} className={classes.homebutton}>
             Ethan's Covid 19 Tracker for Canada
-          </Link>
-          <Link
+          </Button>
+          <Button
             to="/provinces"
-            component={Button}
+            component={Link}
             className={classes.provincesButton}
           >
             Provinces
-          </Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
