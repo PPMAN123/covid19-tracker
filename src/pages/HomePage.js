@@ -8,6 +8,8 @@ import Table from '../components/Table';
 import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart';
 import { Link, link } from 'react-router-dom';
 import AppBar from '../components/Appbar';
+import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles({
   container: {
     transition: 'opacity 0.5s ease',
@@ -93,7 +95,9 @@ const HomePage = () => {
             />
           </Grid>
           <Grid>
-            <Link to="/provinces">Provinces</Link>
+            <Link to="/provinces" component={Button}>
+              Provinces
+            </Link>
           </Grid>
         </Grid>
         <Grid item spacing={3} container direction="row" justify="center">
