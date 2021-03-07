@@ -85,7 +85,7 @@ const CumulativeChart = ({ children, ...rest }) => {
         });
       });
     }
-  }, [report]);
+  }, [report.dataPoints]);
 
   return (
     <BaseChart

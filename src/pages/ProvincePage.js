@@ -3,6 +3,8 @@ import React from 'react';
 import SimpleMenu from '../components/Menu';
 import AppBar from '../components/Appbar';
 import { makeStyles } from '@material-ui/core';
+import BounceLoader from '../components/BounceLoader';
+import { useReport } from '../context/ReportContext';
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -16,9 +18,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProvincePage = () => {
+  const { setCurretEndPoint, report } = useReport();
   const c = useStyles();
   return (
     <div className={c.pageContainer}>
+      <BounceLoader
+        exitCondition={report.loadingState === 'complete'}
+        className={c.bounceLoader}
+      />
       <AppBar />
       <Grid>
         <Grid item>
