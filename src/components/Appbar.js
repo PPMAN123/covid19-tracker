@@ -30,11 +30,6 @@ export default function ButtonAppBar() {
   const classes = useStyles();
   const { setCurrentEndpoint } = useReport();
 
-  const handleClick = () => {
-    console.log('clicked');
-    setCurrentEndpoint('reports/');
-  };
-
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} style={{ background: '#212121' }}>
@@ -43,7 +38,7 @@ export default function ButtonAppBar() {
             to="/"
             component={Link}
             className={classes.homebutton}
-            onclick={handleClick()}
+            onclick={() => setCurrentEndpoint('reports/')}
           >
             Ethan's Covid 19 Tracker for Canada
           </Button>
