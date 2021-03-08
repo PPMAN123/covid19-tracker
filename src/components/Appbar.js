@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import { useReport } from '../context/ReportContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,12 +28,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const { setCurrentEndpoint } = useReport();
+
+  const handleClick = () => {
+    console.log('clicked');
+    setCurrentEndpoint('reports/');
+  };
 
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} style={{ background: '#212121' }}>
         <Toolbar className={classes.toolBar}>
-          <Button to="/" component={Link} className={classes.homebutton}>
+          <Button
+            to="/"
+            component={Link}
+            className={classes.homebutton}
+            onclick={handleClick()}
+          >
             Ethan's Covid 19 Tracker for Canada
           </Button>
           <Button

@@ -22,6 +22,7 @@ const ReportProvider = ({ children, value, ...rest }) => {
       const response = await axios.get(
         `/.netlify/functions/node-fetch/?endpoint=${currentEndpoint}`
       );
+      console.log(currentEndpoint);
       const { data } = response;
       if (data) {
         const reportData = data.data;
