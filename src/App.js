@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import { ProvinceProvider } from './context/ProvinceContext';
 import ProvincePage from './pages/ProvincePage';
 import AboutPage from './pages/AboutPage';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/ProblemPage';
 
 function App() {
   return (
