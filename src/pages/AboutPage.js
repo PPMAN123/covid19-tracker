@@ -1,7 +1,8 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import AppBar from '../components/Appbar';
 import { makeStyles } from '@material-ui/core';
+import useJoke from '../hooks/useJoke';
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProvincePage = () => {
   const c = useStyles();
+  const { currentJoke, getRandomJoke } = useJoke();
   return (
     <div className={c.pageContainer}>
       <AppBar />
@@ -30,6 +32,11 @@ const ProvincePage = () => {
           Hi, I am a high school student learning some web development, and this
           is my first project created using react.js
         </Typography>
+        <Typography>
+          I don't know what else to tell ya so here's some jokes
+        </Typography>
+        <Button onClick={() => getRandomJoke()}>Random Joke</Button>
+        <Typography>{currentJoke}</Typography>
       </Grid>
     </div>
   );

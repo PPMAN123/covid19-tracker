@@ -3,21 +3,30 @@ const fetch = require('node-fetch');
 const handler = async function (event) {
   try {
     const { queryStringParameters } = event;
-    const { endpoint } = queryStringParameters;
+    const { endpoint, type } = queryStringParameters;
 
-    const response = await fetch(`https://api.covid19tracker.ca/${endpoint}/`, {
-      headers: { Accept: 'application/json' },
-    });
-    if (!response.ok) {
-      // NOT res.status >= 200 && res.status < 300
-      return { statusCode: response.status, body: response.statusText };
+    let response = null;
+    if (type === 'joke') {
+      response = await fetch(
+        'https://raw.githubusercontent.com/amoudgl/short-jokes-dataset/master/shortjokes.csv',
+        {
+          headers: { Accept: 'plain/text' },
+        }
+      );
+    } else {
+      response = await fetch(`https://api.covid19tracker.ca/${endpoint}/`, {
+        headers: { Accept: 'application/json' },
+      });
     }
-    const data = await response.json();
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data),
-    };
+    let data = null;
+    if (type === 'joke') {
+      data = await response.text();
+      return { statusCode: 200, body: data };
+    } else {
+      data = await response.json();
+      return { statusCode: 200, body: JSON.stringify(data) };
+    }
   } catch (error) {
     // output to netlify function log
     console.log(error);
