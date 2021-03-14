@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
   homebutton: {
     color: 'white',
+    paddingRight: '15px',
   },
-  provincesButton: {
+  rightButtons: {
     color: 'white',
   },
   toolBar: {
@@ -38,19 +39,26 @@ export default function ButtonAppBar() {
             to="/"
             component={Link}
             className={classes.homebutton}
-            onclick={() => {
-              setCurrentEndpoint('reports/');
-            }}
+            onClick={() => setCurrentEndpoint('reports/')}
           >
             Ethan's Covid 19 Tracker for Canada
           </Button>
-          <Button
-            to="/provinces"
-            component={Link}
-            className={classes.provincesButton}
-          >
-            Provinces
-          </Button>
+          <div>
+            <Button
+              to="/about"
+              component={Link}
+              className={classes.rightButtons}
+            >
+              About
+            </Button>
+            <Button
+              to="/provinces"
+              component={Link}
+              className={classes.rightButtons}
+            >
+              Provinces
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
     </div>

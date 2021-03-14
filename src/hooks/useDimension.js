@@ -1,5 +1,5 @@
-import { throttle } from "lodash";
-import { useState, useEffect } from "react";
+import { throttle } from 'lodash';
+import { useState, useEffect } from 'react';
 
 const useDimension = () => {
   const [dimension, setDimension] = useState({
@@ -14,10 +14,10 @@ const useDimension = () => {
         height: window.innerHeight || document.body.clientHeight,
       });
     }, 1);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize);
     };
   }, []);
 

@@ -4,6 +4,8 @@ import { ReportProvider } from './context/ReportContext';
 import HomePage from './pages/HomePage';
 import { ProvinceProvider } from './context/ProvinceContext';
 import ProvincePage from './pages/ProvincePage';
+import AboutPage from './pages/AboutPage';
+import errorPage from './pages/errorPage';
 
 function App() {
   return (
@@ -17,6 +19,12 @@ function App() {
               </Route>
               <Route exact path="/provinces">
                 <ProvincePage />
+              </Route>
+              <Route exact path="/about">
+                <AboutPage />
+              </Route>
+              <Route>
+                <errorPage />
               </Route>
             </Switch>
           </ProvinceProvider>
