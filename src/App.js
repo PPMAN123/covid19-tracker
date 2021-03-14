@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import { ProvinceProvider } from './context/ProvinceContext';
 import ProvincePage from './pages/ProvincePage';
 import AboutPage from './pages/AboutPage';
-import errorPage from './pages/errorPage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
                 <AboutPage />
               </Route>
               <Route>
-                <errorPage />
+                <ErrorPage />
               </Route>
             </Switch>
           </ProvinceProvider>
