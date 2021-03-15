@@ -5,9 +5,9 @@ const useJoke = () => {
   const [jokes, setJokes] = useState(null);
   const [currentJoke, setJoke] = useState('');
 
+  let jokeLines = '';
   const getRandomJoke = () => {
-    //prettier-ignore
-    const jokeLines = jokes.split("\n");
+    jokeLines = jokes.split('\n');
     const randomJokeLineNumber = Math.floor(
       Math.random() * (jokeLines.length - 1) + 1
     );
