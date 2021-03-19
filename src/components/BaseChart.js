@@ -31,6 +31,8 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
             datasets: chartDataset,
           },
           options: {
+            bezierCurve: false,
+            datasetFill: true,
             showLines: true,
             maintainAspectRatio: false,
             responsive: true,
@@ -55,6 +57,12 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
                   },
                 },
               ],
+            },
+            hover: {
+              intersect: false,
+            },
+            tooltips: {
+              intersect: false,
             },
           },
         })
