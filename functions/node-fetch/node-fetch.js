@@ -22,7 +22,14 @@ const handler = async function (event) {
     let data = null;
     if (type === 'joke') {
       data = await response.text();
-      return { statusCode: 200, body: data };
+      const jokeLines = data.split('\n');
+      const randomJokeLineNumber = Math.floor(
+        Math.random() * (jokeLines.length - 1) + 1
+      );
+      const selectedJoke = jokeLines[randomJokeLineNumber];
+      const startIndexOfJoke = selectedJoke.indexOf(',');
+      const actualJoke = selectedJoke.substring(startIndexOfJoke + 1);
+      return { statusCode: 200, body: actualJoke };
     } else {
       data = await response.json();
       return { statusCode: 200, body: JSON.stringify(data) };
