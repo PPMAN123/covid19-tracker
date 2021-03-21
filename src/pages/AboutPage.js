@@ -1,8 +1,8 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import AppBar from '../components/Appbar';
 import { makeStyles } from '@material-ui/core';
-import useJoke from '../hooks/useJoke';
+import Joke from '../components/Joke';
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ProvincePage = () => {
   const c = useStyles();
-  const { currentJoke, getRandomJoke } = useJoke();
   return (
     <div className={c.pageContainer}>
       <AppBar />
@@ -35,8 +34,7 @@ const ProvincePage = () => {
         <Typography>
           I don't know what else to tell ya so here's some jokes
         </Typography>
-        <Button onClick={() => getRandomJoke()}>Random Joke</Button>
-        <Typography>{currentJoke}</Typography>
+        <Joke />
       </Grid>
     </div>
   );

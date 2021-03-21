@@ -5,6 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { useReport } from '../context/ReportContext';
+import InvertColorsIcon from '@material-ui/icons/InvertColors';
+import IconButton from '@material-ui/core/IconButton';
+import { useTheme } from '../context/ThemeContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const { setCurrentEndpoint } = useReport();
+  const { toggleTheme } = useTheme();
+  const handleColorChange = (e) => {
+    e.preventDefault();
+    toggleTheme();
+  };
 
   return (
     <div className={classes.root}>
@@ -44,6 +52,9 @@ export default function ButtonAppBar() {
             Ethan's Covid 19 Tracker for Canada
           </Button>
           <div>
+            <IconButton aria-label="toggle color" onClick={handleColorChange}>
+              <InvertColorsIcon />
+            </IconButton>
             <Button
               to="/about"
               component={Link}

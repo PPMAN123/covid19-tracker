@@ -6,30 +6,34 @@ import { ProvinceProvider } from './context/ProvinceContext';
 import ProvincePage from './pages/ProvincePage';
 import AboutPage from './pages/AboutPage';
 import ErrorPage from './pages/ProblemPage';
-
+import { ThemeProvider } from '@material-ui/styles/';
+import { useTheme } from './context/ThemeContext';
 function App() {
+  const { theme } = useTheme();
   return (
     <Router>
-      <SummaryProvider>
-        <ReportProvider>
-          <ProvinceProvider>
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/provinces">
-                <ProvincePage />
-              </Route>
-              <Route exact path="/about">
-                <AboutPage />
-              </Route>
-              <Route>
-                <ErrorPage />
-              </Route>
-            </Switch>
-          </ProvinceProvider>
-        </ReportProvider>
-      </SummaryProvider>
+      <ThemeProvider theme={theme}>
+        <SummaryProvider>
+          <ReportProvider>
+            <ProvinceProvider>
+              <Switch>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+                <Route exact path="/provinces">
+                  <ProvincePage />
+                </Route>
+                <Route exact path="/about">
+                  <AboutPage />
+                </Route>
+                <Route>
+                  <ErrorPage />
+                </Route>
+              </Switch>
+            </ProvinceProvider>
+          </ReportProvider>
+        </SummaryProvider>
+      </ThemeProvider>
     </Router>
   );
 }

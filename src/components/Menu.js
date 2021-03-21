@@ -46,6 +46,7 @@ export default function SimpleMenu() {
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
+        color="primary"
       >
         {name}
       </Button>
