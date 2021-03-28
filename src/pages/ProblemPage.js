@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     paddingTop: '75px',
+    color: 'secondary',
   },
   aboutWord: {
     padding: '20px 0px',

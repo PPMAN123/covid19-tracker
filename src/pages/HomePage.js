@@ -10,7 +10,7 @@ import { Link, link } from 'react-router-dom';
 import AppBar from '../components/Appbar';
 import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     transition: 'opacity 0.5s ease',
   },
@@ -22,13 +22,14 @@ const useStyles = makeStyles({
   },
   pageContainer: {
     display: 'flex',
-    margin: '20px 5%',
+    padding: '20px 5%',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     paddingTop: '75px',
+    backgroundColor: theme.palette.background.default,
   },
-});
+}));
 
 const HomePage = () => {
   const { summary } = useSummary();
@@ -106,10 +107,8 @@ const HomePage = () => {
             <ProvinceComparisonChart />
           </Grid>
         </Grid>
-        <Grid item spacing={3} container direction="row" justify="center">
-          <Grid item xs={12}>
-            <Table />
-          </Grid>
+        <Grid item xs={12}>
+          <Table />
         </Grid>
       </Grid>
     </div>

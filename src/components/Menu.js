@@ -41,57 +41,58 @@ export default function SimpleMenu() {
   };
 
   return (
-    <Grid>
-      <Button
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-        color="primary"
-      >
-        {name}
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={() => handleClose()}
-      >
-        <MenuItem onClick={() => handleClose('Alberta')}>Alberta</MenuItem>
-        <MenuItem onClick={() => handleClose('British Columbia')}>
-          British Columbia
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Manitoba')}>Manitoba</MenuItem>
-        <MenuItem onClick={() => handleClose('New Brunswick')}>
-          New Brunswick
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Newfoundland and Labrador')}>
-          Newfoundland and Labrador
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Northwest Territories')}>
-          Northwest Territories
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Nova Scotia')}>
-          Nova Scotia
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Nunavut')}>Nunavut</MenuItem>
-        <MenuItem onClick={() => handleClose('Ontario')}>Ontario</MenuItem>
-        <MenuItem onClick={() => handleClose('Prince Edward Island')}>
-          Prince Edward Island
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Quebec')}>Quebec</MenuItem>
-        <MenuItem onClick={() => handleClose('Saskatchewan')}>
-          Saskatchewan
-        </MenuItem>
-        <MenuItem onClick={() => handleClose('Yukon')}>Yukon</MenuItem>
-      </Menu>
-      <Grid>
-        <Grid item>
-          <CumulativeChart />
-        </Grid>
-        <Grid item>
-          <ProvinceDailyChart />
-        </Grid>
+    <Grid container direction="column" spacing={3}>
+      <Grid item>
+        <Button
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+          color="primary"
+          variant="outlined"
+        >
+          {name}
+        </Button>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={() => handleClose()}
+        >
+          <MenuItem onClick={() => handleClose('Alberta')}>Alberta</MenuItem>
+          <MenuItem onClick={() => handleClose('British Columbia')}>
+            British Columbia
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Manitoba')}>Manitoba</MenuItem>
+          <MenuItem onClick={() => handleClose('New Brunswick')}>
+            New Brunswick
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Newfoundland and Labrador')}>
+            Newfoundland and Labrador
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Northwest Territories')}>
+            Northwest Territories
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Nova Scotia')}>
+            Nova Scotia
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Nunavut')}>Nunavut</MenuItem>
+          <MenuItem onClick={() => handleClose('Ontario')}>Ontario</MenuItem>
+          <MenuItem onClick={() => handleClose('Prince Edward Island')}>
+            Prince Edward Island
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Quebec')}>Quebec</MenuItem>
+          <MenuItem onClick={() => handleClose('Saskatchewan')}>
+            Saskatchewan
+          </MenuItem>
+          <MenuItem onClick={() => handleClose('Yukon')}>Yukon</MenuItem>
+        </Menu>
+      </Grid>
+      <Grid item>
+        <CumulativeChart />
+      </Grid>
+      <Grid item>
+        <ProvinceDailyChart />
       </Grid>
     </Grid>
   );

@@ -9,11 +9,12 @@ import { useReport } from '../context/ReportContext';
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
     display: 'flex',
-    margin: '20px 5%',
+    padding: '20px 5%',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     paddingTop: '75px',
+    backgroundColor: theme.palette.background.default,
   },
 }));
 

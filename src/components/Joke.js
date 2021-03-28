@@ -10,7 +10,11 @@ const Joke = () => {
   if (status === 'loading') {
     return (
       <Fragment>
-        <Button onClick={() => getRandomJoke()} color="primary">
+        <Button
+          onClick={() => getRandomJoke()}
+          color="primary"
+          variant="outlined"
+        >
           Random Joke
         </Button>
         <LinearLoader />
@@ -19,10 +23,14 @@ const Joke = () => {
   } else {
     return (
       <Fragment>
-        <Button onClick={() => getRandomJoke()} color="primary">
+        <Button
+          onClick={() => getRandomJoke()}
+          color="primary"
+          variant="outlined"
+        >
           Random Joke
         </Button>
-        <Typography>{currentJoke}</Typography>
+        <Typography color="textPrimary">{currentJoke}</Typography>
       </Fragment>
     );
   }

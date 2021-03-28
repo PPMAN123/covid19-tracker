@@ -7,11 +7,13 @@ import Joke from '../components/Joke';
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
     display: 'flex',
-    margin: '20px 5%',
+    padding: '20px 5%',
     position: 'relative',
-    display: 'flex',
     flexDirection: 'column',
     paddingTop: '75px',
+    margin: '0px',
+    height: 'calc(100vh - 95px)',
+    backgroundColor: theme.palette.background.default,
   },
   aboutWord: {
     padding: '20px 0px',
@@ -25,13 +27,13 @@ const ProvincePage = () => {
       <AppBar />
       <Grid>
         <div className={c.aboutWord}>
-          <Typography>About</Typography>
+          <Typography color="textPrimary">About</Typography>
         </div>
-        <Typography>
+        <Typography color="textPrimary">
           Hi, I am a high school student learning some web development, and this
           is my first project created using react.js
         </Typography>
-        <Typography>
+        <Typography color="textPrimary">
           I don't know what else to tell ya so here's some jokes
         </Typography>
         <Joke />

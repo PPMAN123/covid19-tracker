@@ -10,12 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '../context/ThemeContext';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-  },
   homebutton: {
     color: 'white',
     paddingRight: '15px',
@@ -52,9 +46,12 @@ export default function ButtonAppBar() {
             Ethan's Covid 19 Tracker for Canada
           </Button>
           <div>
-            <IconButton aria-label="toggle color" onClick={handleColorChange}>
-              <InvertColorsIcon />
-            </IconButton>
+            <IconButton
+              aria-label="toggle color"
+              onClick={handleColorChange}
+              component={InvertColorsIcon}
+              color="primary"
+            />
             <Button
               to="/about"
               component={Link}

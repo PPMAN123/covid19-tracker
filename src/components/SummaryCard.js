@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useTransition, animated } from 'react-spring';
 import { cloneDeep } from 'lodash';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   title: {
     color: 'grey',
     fontSize: 18,
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
   },
-});
+}));
 
 const ChangeText = styled.div`
   color: ${(props) => (props.positive ? 'green' : 'red')};
