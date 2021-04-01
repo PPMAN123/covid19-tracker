@@ -6,9 +6,7 @@ import BounceLoader from '../components/BounceLoader';
 import CumulativeChart from '../hoc/CumulativeChart';
 import Table from '../components/Table';
 import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart';
-import { Link, link } from 'react-router-dom';
 import AppBar from '../components/Appbar';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   container: {

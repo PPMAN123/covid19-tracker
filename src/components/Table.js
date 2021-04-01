@@ -14,26 +14,41 @@ import {
   Paper,
 } from '@material-ui/core';
 import { useProvinces } from '../context/ProvinceContext';
+import styled from 'styled-components';
 
 function createData(
   Province,
   Cases,
+  ChangeCases,
   Deaths,
+  ChangeDeaths,
   Tests,
+  ChangeTests,
   Hospitalizations,
+  ChangeHospitalizations,
   Criticals,
+  ChangeCriticals,
   Recoveries,
-  Vaccinated
+  ChangeRecoveries,
+  Vaccinated,
+  ChangeVaccinated
 ) {
   return {
     Province,
     Cases,
+    ChangeCases,
     Deaths,
+    ChangeDeaths,
     Tests,
+    ChangeTests,
     Hospitalizations,
+    ChangeHospitalizations,
     Criticals,
+    ChangeCriticals,
     Recoveries,
+    ChangeRecoveries,
     Vaccinated,
+    ChangeVaccinated,
   };
 }
 
@@ -185,15 +200,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ChangeCell = styled.span`
+  magin-left: 10px;
+  color: ${(props) => (props.positive ? 'green' : 'red')};
+  display: ${(props) => props.zero && 'none'};
+`;
+
 export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
-  const [page, setPage] = React.useState(0);
   const { province, provinceCodeMapping } = useProvinces();
   const [rows, setRows] = useState([]);
   useEffect(() => {
-    console.log(province);
     if (province) {
       const { dataPoints } = province;
       setRows(
@@ -201,12 +220,19 @@ export default function EnhancedTable() {
           return createData(
             provinceCodeMapping[provinceData.province],
             provinceData.total_cases,
+            provinceData.change_cases,
             provinceData.total_fatalities,
+            provinceData.change_fatalities,
             provinceData.total_tests,
+            provinceData.change_tests,
             provinceData.total_hospitalizations,
+            provinceData.change_hospitalizations,
             provinceData.total_criticals,
+            provinceData.change_criticals,
             provinceData.total_recoveries,
-            provinceData.total_vaccinations
+            provinceData.change_recoveries,
+            provinceData.total_vaccinations,
+            provinceData.change_vaccinations
           );
         })
       );
@@ -218,13 +244,6 @@ export default function EnhancedTable() {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  console.log(rows);
-  console.log(stableSort(rows, getComparator(order, orderBy)));
 
   return (
     <div className={classes.root}>
@@ -259,13 +278,101 @@ export default function EnhancedTable() {
                       <TableCell component="th" id={labelId} scope="row">
                         {row.Province}
                       </TableCell>
-                      <TableCell align="left">{row.Cases}</TableCell>
-                      <TableCell align="left">{row.Deaths}</TableCell>
-                      <TableCell align="left">{row.Tests}</TableCell>
-                      <TableCell align="left">{row.Hospitalizations}</TableCell>
-                      <TableCell align="left">{row.Criticals}</TableCell>
-                      <TableCell align="left">{row.Recoveries}</TableCell>
-                      <TableCell align="left">{row.Vaccinated}</TableCell>
+                      <TableCell align="left">
+                        <span>{row.Cases}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={row.ChangeCases && row.ChangeCases >= 0}
+                          zero={row.ChangeCases === 0}
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeCases)}
+                        </ChangeCell>
+                      </TableCell>
+                      <TableCell align="left">
+                        <span>{row.Deaths}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={row.ChangeDeaths && row.ChangeDeaths >= 0}
+                          zero={row.ChangeDeaths === 0}
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeDeaths)}
+                        </ChangeCell>
+                      </TableCell>
+                      <TableCell align="left">
+                        <span>{row.Tests}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={row.ChangeTests && row.ChangeTests >= 0}
+                          zero={row.ChangeTests === 0}
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeTests)}
+                        </ChangeCell>
+                      </TableCell>
+                      <TableCell align="left">
+                        <span>{row.Hospitalizations}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={
+                            row.ChangeHospitalizations &&
+                            row.ChangeHospitalizations >= 0
+                          }
+                          zero={row.ChangeHospitalizations === 0}
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeHospitalizations)}
+                        </ChangeCell>
+                      </TableCell>
+                      <TableCell align="left">
+                        <span>{row.Criticals}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={
+                            row.ChangeCriticals && row.ChangeCriticals >= 0
+                          }
+                          zero={row.ChangeCriticals === 0}
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeCriticals)}
+                        </ChangeCell>
+                      </TableCell>
+                      <TableCell align="left">
+                        <span>{row.Recoveries}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={
+                            row.ChangeRecoveries && row.ChangeRecoveries >= 0
+                          }
+                          zero={row.ChangeRecoveries === 0}
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeRecoveries)}
+                        </ChangeCell>
+                      </TableCell>
+                      <TableCell align="left">
+                        <span>{row.Vaccinated}</span>
+                        <span> </span>
+                        <ChangeCell
+                          positive={
+                            row.ChangeVaccinated && row.ChangeVaccinated >= 0
+                          }
+                          zero={
+                            row.ChangeVaccinated || row.ChangeVaccinated >= 0
+                          }
+                        >
+                          {new Intl.NumberFormat('en-us', {
+                            signDisplay: 'always',
+                          }).format(row.ChangeDVaccinated)}
+                        </ChangeCell>
+                      </TableCell>
                       {/* Cases, Deaths, Tests, Hospitalizations, Criticals, Recoveries, Vaccinated */}
                     </TableRow>
                   );
