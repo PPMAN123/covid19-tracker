@@ -72,7 +72,6 @@ const DailyChart = ({ children, ...rest }) => {
               y: p[fieldName] || 0,
             };
           });
-          console.log(dataSet.data);
           return dataSet;
         });
       });
