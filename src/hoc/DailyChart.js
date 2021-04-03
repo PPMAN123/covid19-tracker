@@ -43,7 +43,7 @@ const dataFields = [
   },
 ];
 
-const CumulativeChart = ({ children, ...rest }) => {
+const DailyChart = ({ children, ...rest }) => {
   const { report } = useReport();
   const [chartDataSet, setChartDataSet] = useState(dataFields);
   const [chartXAxes, setChartXAxes] = useState([]);
@@ -72,6 +72,7 @@ const CumulativeChart = ({ children, ...rest }) => {
               y: p[fieldName] || 0,
             };
           });
+          console.log(dataSet.data);
           return dataSet;
         });
       });
@@ -84,7 +85,7 @@ const CumulativeChart = ({ children, ...rest }) => {
       data={report}
       chartDataset={chartDataSet}
       chartXAxes={chartXAxes}
-      title="Daily Change Cases"
+      title="Daily Change Chart"
       {...rest}
     >
       {children}
@@ -92,4 +93,4 @@ const CumulativeChart = ({ children, ...rest }) => {
   );
 };
 
-export default CumulativeChart;
+export default DailyChart;

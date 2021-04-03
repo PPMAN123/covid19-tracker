@@ -43,7 +43,9 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
             },
             elements: {
               point: {
-                radius: 1.5,
+                radius: 0,
+                hitRadius: 4,
+                hoverRadius: 4,
               },
             },
             scales: {
@@ -63,6 +65,30 @@ const BaseChart = ({ type, chartDataset, chartXAxes, title }) => {
             },
             tooltips: {
               intersect: false,
+            },
+            pan: {
+              enabled: true,
+              mode: 'xy',
+              rangeMin: {
+                x: null,
+                y: null,
+              },
+              rangeMax: {
+                x: null,
+                y: null,
+              },
+            },
+            zoom: {
+              enabled: true,
+              mode: 'xy',
+              rangeMin: {
+                x: null,
+                y: null,
+              },
+              rangeMax: {
+                x: null,
+                y: null,
+              },
             },
           },
         })

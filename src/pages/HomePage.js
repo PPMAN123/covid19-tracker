@@ -7,6 +7,7 @@ import CumulativeChart from '../hoc/CumulativeChart';
 import Table from '../components/Table';
 import ProvinceComparisonChart from '../hoc/ProvinceComparisonChart';
 import AppBar from '../components/Appbar';
+import DailyChart from '../hoc/DailyChart';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -104,6 +105,9 @@ const HomePage = () => {
           <Grid item lg={6} xs={12}>
             <ProvinceComparisonChart />
           </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <DailyChart />
         </Grid>
         <Grid item xs={12}>
           <Table />
