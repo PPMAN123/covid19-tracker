@@ -3,6 +3,8 @@ import { Card, CardContent, Typography, makeStyles } from '@material-ui/core';
 import styled from 'styled-components';
 import { useTransition, animated } from 'react-spring';
 import { cloneDeep } from 'lodash';
+import Switch from '@material-ui/core/Switch';
+import { useSwitch } from '../context/SwitchContext';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -39,14 +41,67 @@ const ChangeText = styled.div`
   align-items: center;
 `;
 
-const SummaryCard = ({ amount, secondaryAmount, title, description }) => {
+const SummaryCard = ({
+  amount,
+  secondaryAmount,
+  title,
+  description,
+  toggleRequired,
+  toggledAmount,
+  toggledDescription,
+  toggleTo,
+  children,
+  secondaryToggleAmount,
+}) => {
   const c = useStyles();
   const [amountItems, setAmountItems] = useState([]);
   const [secondaryAmountItems, setSecondaryAmountItems] = useState([]);
+  const [currentAmount, setCurrentAmount] = useState(amount);
+  const [hasChanged, changeHasChanged] = useState(false);
+  const [currentSecondaryAmount, setCurrentSecondaryAmount] = useState(
+    secondaryAmount
+  );
+  const [toggledBack, setToggledBack] = useState(false);
+  const { switchState, setSwitchState } = useSwitch();
 
   useEffect(() => {
-    if (amount) {
-      const amountString = `${new Intl.NumberFormat().format(amount)}`;
+    setCurrentSecondaryAmount(secondaryToggleAmount);
+  }, [secondaryToggleAmount]);
+
+  useEffect(() => {
+    setCurrentAmount(amount);
+  }, [amount]);
+
+  useEffect(() => {
+    if (hasChanged && toggledBack) {
+      setCurrentSecondaryAmount(
+        `${new Intl.NumberFormat('en-US', {
+          signDisplay: 'always',
+        }).format(secondaryToggleAmount)}`
+      );
+    } else {
+      setCurrentSecondaryAmount(
+        `${new Intl.NumberFormat('en-US', {
+          signDisplay: 'always',
+        }).format(secondaryAmount)}`
+      );
+    }
+  }, [hasChanged, toggledBack]);
+
+  useEffect(() => {
+    if (switchState) {
+      setCurrentAmount(toggledAmount);
+      changeHasChanged(true);
+      setToggledBack(true);
+    } else {
+      setCurrentAmount(amount);
+      setToggledBack(false);
+    }
+  }, [switchState]);
+
+  useEffect(() => {
+    if (currentAmount) {
+      const amountString = `${new Intl.NumberFormat().format(currentAmount)}`;
       setAmountItems([
         {
           key: 0,
@@ -54,11 +109,11 @@ const SummaryCard = ({ amount, secondaryAmount, title, description }) => {
         },
       ]);
     }
-  }, [amount]);
+  }, [currentAmount]);
 
   useEffect(() => {
-    if (amount) {
-      const amountString = `${new Intl.NumberFormat().format(amount)}`;
+    if (currentAmount) {
+      const amountString = `${new Intl.NumberFormat().format(currentAmount)}`;
       if (amountItems.length > 0 && amountItems.length < amountString.length) {
         setTimeout(() => {
           setAmountItems((prevAmountItems) => {
@@ -75,8 +130,8 @@ const SummaryCard = ({ amount, secondaryAmount, title, description }) => {
   }, [amountItems]);
 
   useEffect(() => {
-    if (amount) {
-      const amountString = `${new Intl.NumberFormat().format(amount)}`;
+    if (currentAmount) {
+      const amountString = `${new Intl.NumberFormat().format(currentAmount)}`;
       if (amountItems.length > 0 && amountItems.length == amountString.length) {
         const secondaryAmountString = `${new Intl.NumberFormat('en-US', {
           signDisplay: 'always',
@@ -109,7 +164,7 @@ const SummaryCard = ({ amount, secondaryAmount, title, description }) => {
             });
             return newAmountItems;
           });
-        }, 250);
+        }, 100);
       }
     }
   }, [secondaryAmountItems]);
@@ -132,22 +187,52 @@ const SummaryCard = ({ amount, secondaryAmount, title, description }) => {
   return (
     <Card className={c.card}>
       <CardContent>
-        <Typography className={c.title}>{title}</Typography>
+        {switchState ? (
+          <Typography className={c.title}>{toggleTo}</Typography>
+        ) : (
+          <Typography className={c.title}>{title}</Typography>
+        )}
         <Typography className={c.amountText}>
-          {transitions.map(({ item, props, key }) => (
-            <animated.div key={key} style={props}>
-              {item.text}
-            </animated.div>
-          ))}
-          <ChangeText positive={secondaryAmount && secondaryAmount >= 0}>
-            {secondaryTransitions.map(({ item, props, key }) => (
-              <animated.div key={key} style={props}>
-                {item.text}
-              </animated.div>
-            ))}
-          </ChangeText>
+          {hasChanged ? (
+            <React.Fragment>
+              {`${new Intl.NumberFormat().format(currentAmount)}`}
+              <ChangeText positive={secondaryAmount && secondaryAmount >= 0}>
+                {currentSecondaryAmount}
+              </ChangeText>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {transitions.map(({ item, props, key }) => (
+                <animated.div key={key} style={props}>
+                  {item.text}
+                </animated.div>
+              ))}
+              <ChangeText positive={secondaryAmount && secondaryAmount >= 0}>
+                {secondaryTransitions.map(({ item, props, key }) => (
+                  <animated.div key={key} style={props}>
+                    {item.text}
+                  </animated.div>
+                ))}
+              </ChangeText>
+            </React.Fragment>
+          )}
         </Typography>
-        <Typography className={c.descriptionText}>{description}</Typography>
+        {switchState ? (
+          <Typography className={c.descriptionText}>
+            {toggledDescription}
+          </Typography>
+        ) : (
+          <Typography className={c.descriptionText}>{description}</Typography>
+        )}
+        {toggleRequired && children && (
+          <React.Fragment>
+            {children[0]}
+            <Typography component="span" className={c.descriptionText}>
+              {toggleTo}
+            </Typography>
+          </React.Fragment>
+        )}
+        {children && children[1]}
       </CardContent>
     </Card>
   );

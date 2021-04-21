@@ -25,8 +25,8 @@ const dataFields = [
   },
   {
     label: 'New Tests',
-    borderColor: '#f4a261',
-    backgroundColor: '#F8C8A0',
+    borderColor: '#e9c46a',
+    backgroundColor: '#EFD595',
     data: [],
     hidden: true,
     fill: true,
@@ -34,12 +34,21 @@ const dataFields = [
   },
   {
     label: 'New Recoveries',
+    borderColor: '#f4a261',
+    backgroundColor: '#F8C8A0',
+    data: [],
+    hidden: true,
+    fill: true,
+    fieldName: 'change_recoveries',
+  },
+  {
+    label: 'New Vaccinations',
     borderColor: '#e76f51',
     backgroundColor: '#F0A693',
     data: [],
     hidden: true,
     fill: true,
-    fieldName: 'change_recoveries',
+    fieldName: 'change_vaccinations',
   },
 ];
 

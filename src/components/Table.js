@@ -201,7 +201,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ChangeCell = styled.span`
-  magin-left: 10px;
   color: ${(props) => (props.positive ? 'green' : 'red')};
   display: ${(props) => props.zero && 'none'};
 `;
@@ -280,6 +279,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Cases}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={row.ChangeCases && row.ChangeCases >= 0}
@@ -292,6 +292,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Deaths}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={row.ChangeDeaths && row.ChangeDeaths >= 0}
@@ -304,6 +305,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Tests}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={row.ChangeTests && row.ChangeTests >= 0}
@@ -316,6 +318,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Hospitalizations}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={
@@ -331,6 +334,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Criticals}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={
@@ -345,6 +349,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Recoveries}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={
@@ -359,6 +364,7 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         <span>{row.Vaccinated}</span>
+                        {/* prettier-ignore */}
                         <span> </span>
                         <ChangeCell
                           positive={
