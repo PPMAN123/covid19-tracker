@@ -4,42 +4,78 @@ import { useReport } from '../context/ReportContext';
 import { useEffect, useState } from 'react';
 import { cloneDeep } from 'lodash';
 import moment from 'moment';
+import {
+  red,
+  pink,
+  purple,
+  indigo,
+  blue,
+  cyan,
+  teal,
+} from '@material-ui/core/colors';
 
 const dataFields = [
   {
     label: 'New Cases',
     data: [],
-    borderColor: '#264653',
-    backgroundColor: '#3A6B7E',
+    borderColor: red[500],
+    backgroundColor: red[300],
     fill: true,
     fieldName: 'change_cases',
   },
   {
     label: 'New Deaths',
-    borderColor: '#2a9d8f',
+    borderColor: pink[500],
     data: [],
-    backgroundColor: '#3ECCBB',
+    backgroundColor: pink[300],
     hidden: true,
     fill: true,
     fieldName: 'change_fatalities',
   },
   {
     label: 'New Tests',
-    borderColor: '#f4a261',
-    backgroundColor: '#F8C8A0',
+    borderColor: purple[500],
+    backgroundColor: purple[300],
     data: [],
     hidden: true,
     fill: true,
     fieldName: 'change_tests',
   },
   {
+    label: 'New Hospitalizations',
+    borderColor: indigo[500],
+    backgroundColor: indigo[300],
+    data: [],
+    hidden: true,
+    fill: true,
+    fieldName: 'change_hospitalizations',
+  },
+  {
+    label: 'New Criticals',
+    borderColor: blue[500],
+    backgroundColor: blue[300],
+    data: [],
+    hidden: true,
+    fill: true,
+    fieldName: 'change_criticals',
+  },
+  {
     label: 'New Recoveries',
-    borderColor: '#e76f51',
-    backgroundColor: '#F0A693',
+    borderColor: cyan[500],
+    backgroundColor: cyan[300],
     data: [],
     hidden: true,
     fill: true,
     fieldName: 'change_recoveries',
+  },
+  {
+    label: 'New Vaccinations',
+    borderColor: teal[500],
+    backgroundColor: teal[300],
+    data: [],
+    hidden: true,
+    fill: true,
+    fieldName: 'change_vaccinations',
   },
 ];
 

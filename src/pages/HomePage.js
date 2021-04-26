@@ -37,12 +37,17 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const { summary } = useSummary();
   const c = useStyles();
-  const lastDays = useLastDayData(5);
+  const lastDays = useLastDayData(6);
 
+  console.log(lastDays[5]);
   return (
     <div className={c.pageContainer}>
       <AppBar />
-      <BounceLoader exitCondition={summary.loadingState === 'complete'} />
+      <BounceLoader
+        exitCondition={
+          summary.loadingState === 'complete' && lastDays.length != 0
+        }
+      />
       <Grid
         spacing={3}
         container
@@ -53,34 +58,43 @@ const HomePage = () => {
         }`}
       >
         <Grid spacing={3} container direction="row" justify="center" item>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             <SwitchProvider>
-              <SummaryCard
-                title="Total Cases"
-                amount={summary.total_cases}
-                secondaryAmount={summary.change_cases}
-                description="Total number of positive COVID-19 cases in Canada"
-                toggleRequired={true}
-                toggledAmount={
-                  summary.total_cases -
-                  summary.total_fatalities -
-                  summary.total_recoveries
-                }
-                secondaryToggleAmount={summary.change_cases}
-                toggledDescription="Total number of active COVID-19 cases in Canada"
-                toggleTo="Active Cases"
-              >
-                <Switch />
-                <DropDown
-                  days={lastDays}
-                  info="total_cases"
-                  secondaryInfo="change_cases"
-                  isCases={true}
-                />
-              </SummaryCard>
+              {lastDays.length != 0 && (
+                <SummaryCard
+                  title="Total Cases"
+                  amount={summary.total_cases}
+                  secondaryAmount={summary.change_cases}
+                  description="Total number of positive COVID-19 cases in Canada"
+                  toggleRequired={true}
+                  toggledAmount={
+                    summary.total_cases -
+                    summary.total_fatalities -
+                    summary.total_recoveries
+                  }
+                  secondaryToggleAmount={
+                    summary.total_cases -
+                    summary.total_fatalities -
+                    summary.total_recoveries -
+                    (lastDays[5].total_cases -
+                      lastDays[5].total_fatalities -
+                      lastDays[5].total_recoveries)
+                  }
+                  toggledDescription="Total number of active COVID-19 cases in Canada"
+                  toggleTo="Active Cases"
+                >
+                  <Switch />
+                  <DropDown
+                    days={lastDays}
+                    info="total_cases"
+                    secondaryInfo="change_cases"
+                    isCases={true}
+                  />
+                </SummaryCard>
+              )}
             </SwitchProvider>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             <SummaryCard
               title="Total Fatalities"
               amount={summary.total_fatalities}
@@ -95,7 +109,7 @@ const HomePage = () => {
               />
             </SummaryCard>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             <SummaryCard
               title="Total Tests"
               amount={summary.total_tests}
@@ -110,9 +124,7 @@ const HomePage = () => {
               />
             </SummaryCard>
           </Grid>
-        </Grid>
-        <Grid spacing={3} container direction="row" justify="center" item>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             <SwitchProvider>
               <SummaryCard
                 title="Total Hospitalizations"
@@ -136,7 +148,7 @@ const HomePage = () => {
               </SummaryCard>
             </SwitchProvider>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             <SummaryCard
               title="Total Recoveries"
               amount={summary.total_recoveries}
@@ -151,7 +163,7 @@ const HomePage = () => {
               />
             </SummaryCard>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             <SummaryCard
               title="Total Vaccinations"
               amount={summary.total_vaccinations}

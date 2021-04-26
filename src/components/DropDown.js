@@ -69,85 +69,120 @@ const DropDown = ({
                   1 day ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(
-                      days[4].total_cases -
-                        days[4].total_fatalities -
-                        days[4].total_recoveries
+                      days[5].total_cases -
+                        days[5].total_fatalities -
+                        days[5].total_recoveries
                     )}{' '}
-                    {info.substring(info.indexOf('_') + 1)}{' '}
+                    active {info.substring(info.indexOf('_') + 1)}{' '}
                   </span>
                   <span>
                     {Intl.NumberFormat('en-US', {
                       signDisplay: 'always',
-                    }).format(days[4][secondaryInfo])}{' '}
-                    new {info.substring(info.indexOf('_') + 1)}
+                    }).format(
+                      days[5].total_cases -
+                        days[5].total_fatalities -
+                        days[5].total_recoveries -
+                        (days[4].total_cases -
+                          days[4].total_fatalities -
+                          days[4].total_recoveries)
+                    )}{' '}
+                    new active {info.substring(info.indexOf('_') + 1)}
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
                   2 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(
-                      days[3].total_cases -
-                        days[3].total_fatalities -
-                        days[3].total_recoveries
+                      days[4].total_cases -
+                        days[4].total_fatalities -
+                        days[4].total_recoveries
                     )}{' '}
-                    {info.substring(info.indexOf('_') + 1)}{' '}
+                    active {info.substring(info.indexOf('_') + 1)}{' '}
                   </span>
                   <span>
                     {Intl.NumberFormat('en-US', {
                       signDisplay: 'always',
-                    }).format(days[3][secondaryInfo])}{' '}
-                    new {info.substring(info.indexOf('_') + 1)}
+                    }).format(
+                      days[4].total_cases -
+                        days[4].total_fatalities -
+                        days[4].total_recoveries -
+                        (days[3].total_cases -
+                          days[3].total_fatalities -
+                          days[3].total_recoveries)
+                    )}{' '}
+                    new active {info.substring(info.indexOf('_') + 1)}
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
                   3 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(
-                      days[2].total_cases -
-                        days[2].total_fatalities -
-                        days[2].total_recoveries
+                      days[3].total_cases -
+                        days[3].total_fatalities -
+                        days[3].total_recoveries
                     )}{' '}
-                    {info.substring(info.indexOf('_') + 1)}{' '}
+                    active {info.substring(info.indexOf('_') + 1)}{' '}
                   </span>
                   <span>
                     {Intl.NumberFormat('en-US', {
                       signDisplay: 'always',
-                    }).format(days[2][secondaryInfo])}{' '}
-                    new {info.substring(info.indexOf('_') + 1)}
+                    }).format(
+                      days[3].total_cases -
+                        days[3].total_fatalities -
+                        days[3].total_recoveries -
+                        (days[2].total_cases -
+                          days[2].total_fatalities -
+                          days[2].total_recoveries)
+                    )}{' '}
+                    new active {info.substring(info.indexOf('_') + 1)}
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
                   4 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(
-                      days[1].total_cases -
-                        days[1].total_fatalities -
-                        days[1].total_recoveries
+                      days[2].total_cases -
+                        days[2].total_fatalities -
+                        days[2].total_recoveries
                     )}{' '}
-                    {info.substring(info.indexOf('_') + 1)}{' '}
+                    active {info.substring(info.indexOf('_') + 1)}{' '}
                   </span>
                   <span>
                     {Intl.NumberFormat('en-US', {
                       signDisplay: 'always',
-                    }).format(days[1][secondaryInfo])}{' '}
-                    new {info.substring(info.indexOf('_') + 1)}
+                    }).format(
+                      days[2].total_cases -
+                        days[2].total_fatalities -
+                        days[2].total_recoveries -
+                        (days[1].total_cases -
+                          days[1].total_fatalities -
+                          days[1].total_recoveries)
+                    )}{' '}
+                    new active {info.substring(info.indexOf('_') + 1)}
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
                   5 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(
-                      days[0].total_cases -
-                        days[0].total_fatalities -
-                        days[0].total_recoveries
+                      days[1].total_cases -
+                        days[1].total_fatalities -
+                        days[1].total_recoveries
                     )}{' '}
-                    {info.substring(info.indexOf('_') + 1)}{' '}
+                    active {info.substring(info.indexOf('_') + 1)}{' '}
                   </span>
                   <span>
                     {Intl.NumberFormat('en-US', {
                       signDisplay: 'always',
-                    }).format(days[0][secondaryInfo])}{' '}
-                    new {info.substring(info.indexOf('_') + 1)}
+                    }).format(
+                      days[1].total_cases -
+                        days[1].total_fatalities -
+                        days[1].total_recoveries -
+                        (days[0].total_cases -
+                          days[0].total_fatalities -
+                          days[0].total_recoveries)
+                    )}{' '}
+                    new active {info.substring(info.indexOf('_') + 1)}
                   </span>
                 </Typography>
               </React.Fragment>
@@ -155,6 +190,19 @@ const DropDown = ({
               <React.Fragment>
                 <Typography className={classes.typography}>
                   1 day ago{' '}
+                  <span>
+                    {Intl.NumberFormat('en-US').format(days[5][info])}{' '}
+                    {info.substring(info.indexOf('_') + 1)}{' '}
+                  </span>
+                  <span>
+                    {Intl.NumberFormat('en-US', {
+                      signDisplay: 'always',
+                    }).format(days[5][secondaryInfo])}{' '}
+                    new {info.substring(info.indexOf('_') + 1)}
+                  </span>
+                </Typography>
+                <Typography className={classes.typography}>
+                  2 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(days[4][info])}{' '}
                     {info.substring(info.indexOf('_') + 1)}{' '}
@@ -167,7 +215,7 @@ const DropDown = ({
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
-                  2 days ago{' '}
+                  3 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(days[3][info])}{' '}
                     {info.substring(info.indexOf('_') + 1)}{' '}
@@ -180,7 +228,7 @@ const DropDown = ({
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
-                  3 days ago{' '}
+                  4 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(days[2][info])}{' '}
                     {info.substring(info.indexOf('_') + 1)}{' '}
@@ -193,7 +241,7 @@ const DropDown = ({
                   </span>
                 </Typography>
                 <Typography className={classes.typography}>
-                  4 days ago{' '}
+                  5 days ago{' '}
                   <span>
                     {Intl.NumberFormat('en-US').format(days[1][info])}{' '}
                     {info.substring(info.indexOf('_') + 1)}{' '}
@@ -205,19 +253,6 @@ const DropDown = ({
                     new {info.substring(info.indexOf('_') + 1)}
                   </span>
                 </Typography>
-                <Typography className={classes.typography}>
-                  5 days ago{' '}
-                  <span>
-                    {Intl.NumberFormat('en-US').format(days[0][info])}{' '}
-                    {info.substring(info.indexOf('_') + 1)}{' '}
-                  </span>
-                  <span>
-                    {Intl.NumberFormat('en-US', {
-                      signDisplay: 'always',
-                    }).format(days[0][secondaryInfo])}{' '}
-                    new {info.substring(info.indexOf('_') + 1)}
-                  </span>
-                </Typography>
               </React.Fragment>
             )
           ) : switchState ? (
@@ -225,66 +260,91 @@ const DropDown = ({
               <Typography className={classes.typography}>
                 1 day ago{' '}
                 <span>
-                  {Intl.NumberFormat('en-US').format(days[4][toggleInfo])}{' '}
-                  {info.substring(info.indexOf('_') + 1)}{' '}
+                  {Intl.NumberFormat('en-US').format(days[5][toggleInfo])}{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}{' '}
                 </span>
                 <span>
                   {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
-                    days[4][toggleSecondaryInfo]
+                    days[5][toggleSecondaryInfo]
                   )}{' '}
-                  new {info.substring(info.indexOf('_') + 1)}
+                  new{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}
                 </span>
               </Typography>
               <Typography className={classes.typography}>
                 2 days ago{' '}
                 <span>
-                  {Intl.NumberFormat('en-US').format(days[3][toggleInfo])}{' '}
-                  {info.substring(info.indexOf('_') + 1)}{' '}
+                  {Intl.NumberFormat('en-US').format(days[4][toggleInfo])}{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}{' '}
                 </span>
                 <span>
                   {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
-                    days[3][toggleSecondaryInfo]
+                    days[4][toggleSecondaryInfo]
                   )}{' '}
-                  new {info.substring(info.indexOf('_') + 1)}
+                  new{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}
                 </span>
               </Typography>
               <Typography className={classes.typography}>
                 3 days ago{' '}
                 <span>
-                  {Intl.NumberFormat('en-US').format(days[2][toggleInfo])}{' '}
-                  {info.substring(info.indexOf('_') + 1)}{' '}
+                  {Intl.NumberFormat('en-US').format(days[3][toggleInfo])}{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}{' '}
                 </span>
                 <span>
                   {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
-                    days[2][toggleSecondaryInfo]
+                    days[3][toggleSecondaryInfo]
                   )}{' '}
-                  new {info.substring(info.indexOf('_') + 1)}
+                  new{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}
                 </span>
               </Typography>
               <Typography className={classes.typography}>
                 4 days ago{' '}
                 <span>
-                  {Intl.NumberFormat('en-US').format(days[1][toggleInfo])}{' '}
-                  {info.substring(info.indexOf('_') + 1)}{' '}
+                  {Intl.NumberFormat('en-US').format(days[2][toggleInfo])}{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}{' '}
                 </span>
                 <span>
                   {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
-                    days[1][toggleSecondaryInfo]
+                    days[2][toggleSecondaryInfo]
                   )}{' '}
-                  new {info.substring(info.indexOf('_') + 1)}
+                  new{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}
                 </span>
               </Typography>
               <Typography className={classes.typography}>
                 5 days ago{' '}
                 <span>
-                  {Intl.NumberFormat('en-US').format(days[0][toggleInfo])}{' '}
-                  {info.substring(info.indexOf('_') + 1)}{' '}
+                  {Intl.NumberFormat('en-US').format(days[1][toggleInfo])}{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}{' '}
                 </span>
                 <span>
                   {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
-                    days[0][toggleSecondaryInfo]
+                    days[1][toggleSecondaryInfo]
                   )}{' '}
-                  new {info.substring(info.indexOf('_') + 1)}
+                  new{' '}
+                  {toggleSecondaryInfo.substring(
+                    toggleSecondaryInfo.indexOf('_') + 1
+                  )}
                 </span>
               </Typography>
             </React.Fragment>
@@ -292,6 +352,19 @@ const DropDown = ({
             <React.Fragment>
               <Typography className={classes.typography}>
                 1 day ago{' '}
+                <span>
+                  {Intl.NumberFormat('en-US').format(days[5][info])}{' '}
+                  {info.substring(info.indexOf('_') + 1)}{' '}
+                </span>
+                <span>
+                  {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
+                    days[5][secondaryInfo]
+                  )}{' '}
+                  new {info.substring(info.indexOf('_') + 1)}
+                </span>
+              </Typography>
+              <Typography className={classes.typography}>
+                2 days ago{' '}
                 <span>
                   {Intl.NumberFormat('en-US').format(days[4][info])}{' '}
                   {info.substring(info.indexOf('_') + 1)}{' '}
@@ -304,7 +377,7 @@ const DropDown = ({
                 </span>
               </Typography>
               <Typography className={classes.typography}>
-                2 days ago{' '}
+                3 days ago{' '}
                 <span>
                   {Intl.NumberFormat('en-US').format(days[3][info])}{' '}
                   {info.substring(info.indexOf('_') + 1)}{' '}
@@ -317,7 +390,7 @@ const DropDown = ({
                 </span>
               </Typography>
               <Typography className={classes.typography}>
-                3 days ago{' '}
+                4 days ago{' '}
                 <span>
                   {Intl.NumberFormat('en-US').format(days[2][info])}{' '}
                   {info.substring(info.indexOf('_') + 1)}{' '}
@@ -330,7 +403,7 @@ const DropDown = ({
                 </span>
               </Typography>
               <Typography className={classes.typography}>
-                4 days ago{' '}
+                5 days ago{' '}
                 <span>
                   {Intl.NumberFormat('en-US').format(days[1][info])}{' '}
                   {info.substring(info.indexOf('_') + 1)}{' '}
@@ -338,19 +411,6 @@ const DropDown = ({
                 <span>
                   {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
                     days[1][secondaryInfo]
-                  )}{' '}
-                  new {info.substring(info.indexOf('_') + 1)}
-                </span>
-              </Typography>
-              <Typography className={classes.typography}>
-                5 days ago{' '}
-                <span>
-                  {Intl.NumberFormat('en-US').format(days[0][info])}{' '}
-                  {info.substring(info.indexOf('_') + 1)}{' '}
-                </span>
-                <span>
-                  {Intl.NumberFormat('en-US', { signDisplay: 'always' }).format(
-                    days[0][secondaryInfo]
                   )}{' '}
                   new {info.substring(info.indexOf('_') + 1)}
                 </span>

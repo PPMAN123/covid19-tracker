@@ -4,29 +4,37 @@ import { useReport } from '../context/ReportContext';
 import { useEffect, useState } from 'react';
 import { cloneDeep } from 'lodash';
 import moment from 'moment';
+import {
+  red,
+  pink,
+  purple,
+  indigo,
+  blue,
+  cyan,
+} from '@material-ui/core/colors';
 
 const dataFields = [
   {
     label: 'Total Cases',
     data: [],
-    borderColor: '#264653',
-    backgroundColor: '#3A6B7E',
+    borderColor: red[500],
+    backgroundColor: red[300],
     fill: true,
     fieldName: 'total_cases',
   },
   {
     label: 'Total Deaths',
-    borderColor: '#2a9d8f',
+    borderColor: pink[500],
+    backgroundColor: pink[300],
     data: [],
-    backgroundColor: '#3ECCBB',
     hidden: true,
     fill: true,
     fieldName: 'total_fatalities',
   },
   {
     label: 'Total Hospitalizations',
-    borderColor: '#e9c46a',
-    backgroundColor: '#EFD595',
+    borderColor: purple[500],
+    backgroundColor: purple[300],
     data: [],
     hidden: true,
     fill: true,
@@ -34,8 +42,8 @@ const dataFields = [
   },
   {
     label: 'Total Tests',
-    borderColor: '#f4a261',
-    backgroundColor: '#F8C8A0',
+    borderColor: indigo[500],
+    backgroundColor: indigo[300],
     data: [],
     hidden: true,
     fill: true,
@@ -43,12 +51,21 @@ const dataFields = [
   },
   {
     label: 'Total Recoveries',
-    borderColor: '#e76f51',
-    backgroundColor: '#F0A693',
+    borderColor: blue[500],
+    backgroundColor: blue[300],
     data: [],
     hidden: true,
     fill: true,
     fieldName: 'total_recoveries',
+  },
+  {
+    label: 'Total Vaccinations',
+    borderColor: cyan[500],
+    backgroundColor: cyan[300],
+    data: [],
+    hidden: true,
+    fill: true,
+    fieldName: 'total_vaccinations',
   },
 ];
 

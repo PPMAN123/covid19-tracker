@@ -3,45 +3,70 @@ import BaseChart from '../components/BaseChart';
 import { useProvinces } from '../context/ProvinceContext';
 import { useEffect, useState } from 'react';
 import { cloneDeep } from 'lodash';
+import {
+  red,
+  pink,
+  purple,
+  indigo,
+  blue,
+  cyan,
+  teal,
+} from '@material-ui/core/colors';
 
 const dataFields = [
   {
     label: 'Total Cases',
     data: [],
-    borderColor: '#000000',
-    backgroundColor: '#000000',
+    borderColor: red[300],
+    backgroundColor: red[500],
     fieldName: 'total_cases',
   },
   {
     label: 'Total Recoveries',
     data: [],
-    borderColor: '#893168',
-    backgroundColor: '#893168',
+    borderColor: pink[300],
+    backgroundColor: pink[500],
     fieldName: 'total_recoveries',
     hidden: true,
   },
   {
     label: 'Total Deaths',
     data: [],
-    borderColor: '#1098F7',
-    backgroundColor: '#1098F7',
+    borderColor: purple[300],
+    backgroundColor: purple[500],
     fieldName: 'total_fatalities',
     hidden: true,
   },
   {
     label: 'Total Hospitalizations',
     data: [],
-    borderColor: '#CCCCCC',
-    backgroundColor: '#CCCCCC',
+    borderColor: indigo[300],
+    backgroundColor: indigo[500],
     fieldName: 'total_hospitalizations',
+    hidden: true,
+  },
+  {
+    label: 'Total Criticals',
+    data: [],
+    borderColor: blue[300],
+    backgroundColor: blue[500],
+    fieldName: 'total_criticals',
     hidden: true,
   },
   {
     label: 'Total Tests',
     data: [],
-    borderColor: '#B89E97',
-    backgroundColor: '#B89E97',
+    borderColor: cyan[300],
+    backgroundColor: cyan[500],
     fieldName: 'total_tests',
+    hidden: true,
+  },
+  {
+    label: 'Total Vaccinations',
+    data: [],
+    borderColor: teal[300],
+    backgroundColor: teal[500],
+    fieldName: 'total_vaccinations',
     hidden: true,
   },
 ];

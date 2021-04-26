@@ -196,7 +196,9 @@ const SummaryCard = ({
           {hasChanged ? (
             <React.Fragment>
               {`${new Intl.NumberFormat().format(currentAmount)}`}
-              <ChangeText positive={secondaryAmount && secondaryAmount >= 0}>
+              <ChangeText
+                positive={currentSecondaryAmount && currentSecondaryAmount >= 0}
+              >
                 {currentSecondaryAmount}
               </ChangeText>
             </React.Fragment>

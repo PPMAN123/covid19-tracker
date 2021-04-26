@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage';
 import ErrorPage from './pages/ProblemPage';
 import { ThemeProvider } from '@material-ui/styles/';
 import { useTheme } from './context/ThemeContext';
+import { ProvinceSummaryProvider } from './context/ProvinceSummaryContext';
 function App() {
   const { theme } = useTheme();
   return (
@@ -16,20 +17,22 @@ function App() {
         <SummaryProvider>
           <ReportProvider>
             <ProvinceProvider>
-              <Switch>
-                <Route exact path="/">
-                  <HomePage />
-                </Route>
-                <Route exact path="/provinces">
-                  <ProvincePage />
-                </Route>
-                <Route exact path="/about">
-                  <AboutPage />
-                </Route>
-                <Route>
-                  <ErrorPage />
-                </Route>
-              </Switch>
+              <ProvinceSummaryProvider>
+                <Switch>
+                  <Route exact path="/">
+                    <HomePage />
+                  </Route>
+                  <Route exact path="/provinces">
+                    <ProvincePage />
+                  </Route>
+                  <Route exact path="/about">
+                    <AboutPage />
+                  </Route>
+                  <Route>
+                    <ErrorPage />
+                  </Route>
+                </Switch>
+              </ProvinceSummaryProvider>
             </ProvinceProvider>
           </ReportProvider>
         </SummaryProvider>
