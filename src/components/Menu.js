@@ -3,16 +3,16 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useReport } from '../context/ReportContext';
-import CumulativeChart from '../hoc/CumulativeChart';
 import { Grid } from '@material-ui/core';
-import ProvinceDailyChart from '../hoc/ProvinceDailyChart';
 import { useProvinceSummary } from '../context/ProvinceSummaryContext';
+import { useSwitch } from '../context/SwitchContext';
 
 export default function SimpleMenu({ children }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [name, setName] = React.useState('Select Province');
   const { setCurrentEndpoint } = useReport();
   const { setSelectedProvince } = useProvinceSummary();
+  const { setSwitchState } = useSwitch();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -36,6 +36,7 @@ export default function SimpleMenu({ children }) {
 
   const handleClose = (name) => {
     setAnchorEl(null);
+    setSwitchState(false);
     if (name) {
       setName(name);
       setCurrentEndpoint(`reports/province/${provinceCodeMapping[name]}`);
@@ -95,13 +96,6 @@ export default function SimpleMenu({ children }) {
             <MenuItem onClick={() => handleClose('Yukon')}>Yukon</MenuItem>
           </Menu>
         </Grid>
-      </Grid>
-      {children}
-      <Grid item>
-        <CumulativeChart />
-      </Grid>
-      <Grid item>
-        <ProvinceDailyChart />
       </Grid>
     </Grid>
   );

@@ -53,6 +53,7 @@ const ProvinceSummaryProvider = ({ children, value, ...rest }) => {
       value={{
         setSelectedProvince,
         currentProvinceData,
+        selectedProvince,
       }}
       {...rest}
     >
@@ -62,10 +63,12 @@ const ProvinceSummaryProvider = ({ children, value, ...rest }) => {
 };
 
 const useProvinceSummary = () => {
-  const { currentProvinceData, setSelectedProvince } = useContext(
-    ProvinceSummaryContext
-  );
-  return { currentProvinceData, setSelectedProvince };
+  const {
+    currentProvinceData,
+    setSelectedProvince,
+    selectedProvince,
+  } = useContext(ProvinceSummaryContext);
+  return { currentProvinceData, setSelectedProvince, selectedProvince };
 };
 
 export { ProvinceSummaryProvider, useProvinceSummary };

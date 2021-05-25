@@ -39,7 +39,6 @@ const HomePage = () => {
   const c = useStyles();
   const lastDays = useLastDayData(6);
 
-  console.log(lastDays[5]);
   return (
     <div className={c.pageContainer}>
       <AppBar />

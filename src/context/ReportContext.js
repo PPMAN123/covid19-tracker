@@ -56,6 +56,7 @@ const ReportProvider = ({ children, value, ...rest }) => {
         report,
         setReports,
         setCurrentEndpoint,
+        currentEndpoint,
       }}
       {...rest}
     >
@@ -65,8 +66,13 @@ const ReportProvider = ({ children, value, ...rest }) => {
 };
 
 const useReport = () => {
-  const { report, setReports, setCurrentEndpoint } = useContext(ReportContext);
-  return { report, setReports, setCurrentEndpoint };
+  const {
+    report,
+    setReports,
+    setCurrentEndpoint,
+    currentEndpoint,
+  } = useContext(ReportContext);
+  return { report, setReports, setCurrentEndpoint, currentEndpoint };
 };
 
 export { ReportProvider, useReport };

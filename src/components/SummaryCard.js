@@ -33,7 +33,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ChangeText = styled.div`
-  color: ${(props) => (props.positive ? 'green' : 'red')};
+  color: ${(props) => {
+    return props.positive ? 'green' : 'red';
+  }};
   margin-left: 6px;
   font-size: 14px;
   flex-direction: row;
@@ -147,7 +149,7 @@ const SummaryCard = ({
   }, [amountItems]);
 
   useEffect(() => {
-    if (secondaryAmount) {
+    if (secondaryAmount || secondaryAmount === 0) {
       const secondaryAmountString = `${new Intl.NumberFormat('en-US', {
         signDisplay: 'always',
       }).format(secondaryAmount || 0)}`;
@@ -174,7 +176,7 @@ const SummaryCard = ({
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-40px,0)', opacity: 0 },
   });
-
+  console.log(secondaryAmountItems);
   const secondaryTransitions = useTransition(
     secondaryAmountItems,
     (item) => item.key,
@@ -184,6 +186,15 @@ const SummaryCard = ({
       leave: { transform: 'translate3d(0,-40px,0)', opacity: 0 },
     }
   );
+  const checkPositive = () => {
+    console.log(typeof currentSecondaryAmount);
+    if (currentSecondaryAmount && typeof currentSecondaryAmount === 'number') {
+      return currentSecondaryAmount >= 0;
+    }
+    if (currentSecondaryAmount && typeof currentSecondaryAmount === 'string') {
+      return currentSecondaryAmount.includes('+');
+    }
+  };
   return (
     <Card className={c.card}>
       <CardContent>
@@ -196,9 +207,7 @@ const SummaryCard = ({
           {hasChanged ? (
             <React.Fragment>
               {`${new Intl.NumberFormat().format(currentAmount)}`}
-              <ChangeText
-                positive={currentSecondaryAmount && currentSecondaryAmount >= 0}
-              >
+              <ChangeText positive={checkPositive()}>
                 {currentSecondaryAmount}
               </ChangeText>
             </React.Fragment>
@@ -209,7 +218,12 @@ const SummaryCard = ({
                   {item.text}
                 </animated.div>
               ))}
-              <ChangeText positive={secondaryAmount && secondaryAmount >= 0}>
+              <ChangeText
+                positive={
+                  (secondaryAmount || secondaryAmount === 0) &&
+                  secondaryAmount >= 0
+                }
+              >
                 {secondaryTransitions.map(({ item, props, key }) => (
                   <animated.div key={key} style={props}>
                     {item.text}

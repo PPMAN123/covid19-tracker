@@ -41,7 +41,7 @@ export default function ButtonAppBar() {
             to="/"
             component={Link}
             className={classes.homebutton}
-            onClick={() => setCurrentEndpoint('reports/')}
+            onClick={() => setCurrentEndpoint('reports')}
           >
             Ethan's Covid 19 Tracker for Canada
           </Button>

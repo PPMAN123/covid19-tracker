@@ -34,7 +34,6 @@ const DropDown = ({
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-  console.log(secondaryInfo);
   const { switchState, setSwitchState } = useSwitch();
 
   return (
