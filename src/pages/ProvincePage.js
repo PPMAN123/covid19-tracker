@@ -155,7 +155,7 @@ const ProvincePage = () => {
                   toggleRequired={true}
                   toggledAmount={currentProvinceData.total_criticals}
                   secondaryToggleAmount={currentProvinceData.change_criticals}
-                  toggledDescription="Total number of COVID patients in critical conditions in Canada"
+                  toggledDescription={`Total number of COVID patients in critical conditions in ${getCurrentProvince()}`}
                   toggleTo="Criticals"
                 >
                   <Switch />
@@ -174,7 +174,7 @@ const ProvincePage = () => {
                 title="Total Recoveries"
                 amount={currentProvinceData.total_recoveries}
                 secondaryAmount={currentProvinceData.change_recoveries}
-                description="Total number of COVID-19 recoveries in Canada"
+                description={`Total number of COVID-19 recoveries in ${getCurrentProvince()}`}
               >
                 <React.Fragment />
                 <DropDown
@@ -189,7 +189,7 @@ const ProvincePage = () => {
                 title="Total Vaccinations"
                 amount={currentProvinceData.total_vaccinations}
                 secondaryAmount={currentProvinceData.change_vaccinations}
-                description="Total number of COVID-19 vaccination doses given in Canada"
+                description={`Total number of COVID-19 vaccination doses given in Canada${getCurrentProvince()}`}
               >
                 <React.Fragment />
                 <DropDown
