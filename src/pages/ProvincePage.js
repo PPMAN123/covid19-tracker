@@ -86,7 +86,7 @@ const ProvincePage = () => {
                   title="Total Cases"
                   amount={currentProvinceData.total_cases}
                   secondaryAmount={currentProvinceData.change_cases}
-                  description={`Total number of positive COVID-19 cases in Canada ${getCurrentProvince()}`}
+                  description={`Total number of positive COVID-19 cases in ${getCurrentProvince()}`}
                   toggleRequired={true}
                   toggledAmount={
                     currentProvinceData.total_cases -
@@ -151,7 +151,7 @@ const ProvincePage = () => {
                   title="Total Hospitalizations"
                   amount={currentProvinceData.total_hospitalizations}
                   secondaryAmount={currentProvinceData.change_hospitalizations}
-                  description="Total number of COVID-19 patients hospitalized in Canada"
+                  description={`Total number of COVID-19 patients hospitalized in ${getCurrentProvince()}`}
                   toggleRequired={true}
                   toggledAmount={currentProvinceData.total_criticals}
                   secondaryToggleAmount={currentProvinceData.change_criticals}
@@ -189,7 +189,7 @@ const ProvincePage = () => {
                 title="Total Vaccinations"
                 amount={currentProvinceData.total_vaccinations}
                 secondaryAmount={currentProvinceData.change_vaccinations}
-                description={`Total number of COVID-19 vaccination doses given in Canada${getCurrentProvince()}`}
+                description={`Total number of COVID-19 vaccination doses given in ${getCurrentProvince()}`}
               >
                 <React.Fragment />
                 <DropDown
